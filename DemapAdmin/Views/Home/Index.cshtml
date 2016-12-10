@@ -1,31 +1,206 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
+﻿<div class="row">
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+    <div class="col-md-12">
+        <div class="row">
+
+
+            <div class="col-md-3">
+                <div class="bg-danger top_cards">
+                    <div class="row icon_margin_left">
+
+                        <div class="col-lg-5 icon_padd_left">
+                            <div class="float-xs-left">
+                                <span class="fa-stack fa-sm">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-shopping-cart fa-stack-1x fa-inverse text-primary sales_hover"></i>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-7 icon_padd_right">
+                            <div class="float-xs-right cards_content">
+                                <span class="number_val" id="sales_count"></span><i class="fa fa-long-arrow-up fa-2x"></i>
+                                <br />
+                                <span class="card_description">Denuncias</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="bg-success top_cards">
+                    <div class="row icon_margin_left">
+                        <div class="col-lg-5 icon_padd_left">
+                            <div class="float-xs-left">
+                                <span class="fa-stack fa-sm">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-eye fa-stack-1x fa-inverse text-success visit_icon"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-lg-7 icon_padd_right">
+                            <div class="float-xs-right cards_content">
+                                <span class="number_val" id="visitors_count"></span><i class="fa fa-long-arrow-up fa-2x"></i>
+                                <br />
+                                <span class="card_description">Seguimiento</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-3">
+                <div class="bg-warning top_cards">
+                    <div class="row icon_margin_left">
+                        <div class="col-lg-5 icon_padd_left">
+                            <div class="float-xs-left">
+                                <span class="fa-stack fa-sm">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-usd fa-stack-1x fa-inverse text-warning revenue_icon"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-lg-7 icon_padd_right">
+                            <div class="float-xs-right cards_content">
+                                <span class="number_val" id="revenue_count"></span><i class="fa fa-long-arrow-up fa-2x"></i>
+                                <br />
+                                <span class="card_description">Revenue</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-3">
+                <div class="bg-mint top_cards">
+                    <div class="row icon_margin_left">
+                        <div class="col-lg-5 icon_padd_left">
+                            <div class="float-xs-left">
+                                <span class="fa-stack fa-sm">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-users  fa-stack-1x fa-inverse text-mint sub"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-lg-7 icon_padd_right">
+                            <div class="float-xs-right cards_content">
+                                <span class="number_val" id="subscribers_count"></span><i class="fa fa-long-arrow-down fa-2x"></i>
+                                <br />
+                                <span class="card_description">Subscribers</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
 </div>
 
+<!-- ESTADISTICS CHARTS -->
 <div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    <div class="col-lg-9 col-xs-12 m-t-25">
+        <div class="card">
+
+            <ul id="clothing-nav" class="nav nav-tabs" role="tablist">
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">Denuncias Semanales</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#hats" role="tab" id="hats-tab" data-toggle="tab" aria-controls="hats">Denuncias Mensuales</a>
+                </li>
+
+
+
+            </ul>
+            <div class="card-block">
+                <div id="clothing-nav-content" class="tab-content">
+
+                    <div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab">
+                        <div id="area-chart" class="flotChart3"></div>
+                    </div>
+
+                    <div role="tabpanel" class="tab-pane fade" id="hats" aria-labelledby="hats-tab">
+
+
+                        <div class="form-group float-xs-right">
+                            <span class="live_switch">Live</span>
+                            <input type="checkbox" id="toggle_real" name="my-checkbox"
+                                   data-size="large" checked>
+                        </div>
+                        <div id="realtime" class="flotChart4 float-xs-right"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    <div class="col-lg-3 col-xs-12 m-t-25 md_align_section">
+        <div class="card">
+            <div class="card-header bg-white">
+                Tipos Denuncias
+            </div>
+            <div class="card-body">
+                <div class="task-item">
+
+                    Sales
+                    <span class="float-xs-right text-muted progress-info">52%</span>
+                    <div id="progress-bar">
+                        <progress class="progress progress-danger" value="52"
+                                  max="100"></progress>
+                    </div>
+                </div>
+                <div class="task-item">
+                    Projects
+                    <span class="float-xs-right text-muted progress-primary">80%</span>
+                    <div id="progress-bar1">
+                        <progress class="progress progress-warning" value="80"
+                                  max="100"></progress>
+                    </div>
+                </div>
+                <div class="task-item">
+                    Visitors
+                    <span class="float-xs-right text-muted progress-warning">25%</span>
+                    <div id="progress-bar2">
+                        <progress class="progress progress-success" value="25"
+                                  max="100"></progress>
+                    </div>
+                </div>
+                <div class="task-item">
+                    New Users
+                    <span class="float-xs-right text-muted progress-primary">93%</span>
+                    <div id="progress-bar5">
+                        <progress class="progress progress-primary" value="93" max="100"></progress>
+                    </div>
+                </div>
+                <div class="task-item">
+                    Revenue
+                    <span class="float-xs-right text-muted progress-danger">50%</span>
+                    <div id="progress-bar3">
+                        <progress class="progress progress-danger" value="50" max="100"></progress>
+                    </div>
+                </div>
+                <div class="task-item">
+                    Total sold
+                    <span class="float-xs-right text-muted">40%</span>
+                    <div id="progress-bar4">
+                        <progress class="progress progress-mint" value="40" max="100"></progress>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
 </div>
+
+
+<ul id="nt-example1">  </ul>
+
+
+<!-- /#content -->
