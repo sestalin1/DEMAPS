@@ -13,8 +13,8 @@
                         <div class="text-xs-center">
                             <div class="form-group">
                                 <div class="fileinput fileinput-new" data-provides="fileinput">
-                                    <div class="fileinput-new thumb_zoom zoom admin_img_width">
-                                        <img src="~/Content/img/admin.jpg" alt="admin" class="admin_img_width">
+                                    <div class="fileinput-new thumb_zoom zoom admin_img_width" id="ImagenPrincipal">
+                                       
                                     </div>
                                 </div>
                             </div>
@@ -26,16 +26,8 @@
                                     <p>
                                         <strong>EVIDENCIAS</strong>
                                     </p>
-                                    <div class="friends_img_left">
-                                        <div class="thumb_zoom zoom">
-                                            <img src="~/Content/img/mailbox_imgs/2.jpg" class="img-rounded" alt="friend">
-                                        </div>
-                                        <div class="thumb_zoom zoom">
-                                            <img src="~/Content/img/mailbox_imgs/3.jpg" class="img-rounded" alt="friend">
-                                        </div>
-                                        <div class="thumb_zoom zoom">
-                                            <img src="~/Content/img/mailbox_imgs/5.jpg" class="img-rounded" alt="friend">
-                                        </div>
+                                    <div class="friends_img_left" id="ListadoEvidencias">
+                                   
                                     </div>
                                 </div>
                             </div>
@@ -56,11 +48,10 @@
                                 </li>
                             </ul>
 
-
-
                             <div id="clothing-nav-content" class="tab-content m-t-10">
                                 <div role="tabpanel" class="tab-pane fade in active" id="user">
                                     <table class="table" id="users">
+
                                         <tr>
                                             <td>Denunciante (Cedula):</td>
                                             <td class="inline_edit">
@@ -216,3 +207,59 @@
 
     </div>
 </div>
+<style>
+    /*.ocultar{
+        display:none;
+    }*/
+</style>
+
+@Html.EditorFor(model => model.Id, new { htmlAttributes = new { @class = "form-control ocultar" } })
+
+
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" type="text/javascript"></script>
+
+
+<script>
+
+    function GetEvidencias() {
+      
+        var DenunciaID = $("#Id").val()
+    
+        if(DenunciaID != ""){
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetEvidencias", "SeguimientoDenuncias")',
+                dataType: 'json',
+                data: { DenunciaID: DenunciaID },
+                success: function (response) {
+
+                    if (response) {
+             
+                        $("#ListadoEvidencias").html("");
+                        
+                        $.each(response, function (index, value) {
+   
+                            $("#ImagenPrincipal").html("<img src='" + value + "' class='admin_img_width'>");
+                            var imagen = "<div class='thumb_zoom zoom'><img src='" + value + "' class='img-rounded' alt='friend'> </div>";
+
+                            $("#ListadoEvidencias").append(imagen);
+                        });
+                    }
+
+
+                }, error: function () {
+
+                    alert("Favor contactar al Administrador");
+                }
+            });
+
+        }else{
+            alert("No existen evidencias registradas!");
+      }
+
+    }
+    GetEvidencias();
+
+</script>
