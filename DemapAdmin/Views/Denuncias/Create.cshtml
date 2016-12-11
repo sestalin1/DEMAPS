@@ -1,0 +1,518 @@
+﻿
+<div class="outer">
+    <div class="inner bg-light lter bg-container">
+        <!-- BEGIN DATE PICKER -->
+        <div class="row">
+            <!-- .col-lg-12 -->
+            <div class="col-xl-12">
+                <div class="card form_elements_datepicker">
+                    <div class="card-header bg-white">
+                        Date Picker
+                    </div>
+                    <div class="card-block" id="datePickerBlock">
+                        <div class="row">
+                            <div class="col-lg-4 input_field_sections">
+                                <h5>Format specified via options</h5>
+                                <form>
+                                    <input type="text" class="form-control" placeholder="dd-mm-yyyy" id="dp1">
+                                </form>
+                            </div>
+                            <div class="col-lg-4 input_field_sections">
+                                <h5>Format specified via data tag</h5>
+                                <form>
+                                    <input type="text" class="form-control" placeholder="dd/mm/yyyy" data-date-format="dd/mm/yyyy" id="dp2">
+                                </form>
+                            </div>
+                            <div class="col-lg-4 input_field_sections">
+                                <h5>Field with different style</h5>
+                                <form>
+                                    <input type="text" class="form-control" data-field="datetime">
+                                </form>
+                                <div id="dtBox"></div>
+                            </div>
+                        </div>
+                        <div class="row m-b-20">
+                            <div class="col-lg-4 input_field_sections">
+                                <h5>As component</h5>
+                                <form>
+                                    <div class="input-group input-append date" id="dp3" data-date-format="dd-mm-yyyy">
+                                        <input class="form-control" type="text" placeholder="dd-mm-yyyy">
+                                        <span class="input-group-addon add-on">
+                                            <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-lg-4 input_field_sections">
+                                <h5>Start with years viewMode</h5>
+                                <form>
+                                    <div class="input-group input-append  date" id="dpYears" data-date-format="yyyy-mm-dd" data-date-viewmode="years">
+                                        <input class="form-control" type="text" placeholder="yyyy-mm-dd">
+                                        <span class="input-group-addon add-on">
+                                            <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-lg-4 input_field_sections">
+                                <h5>Months and year</h5>
+                                <form>
+                                    <div class="input-group input-append  date" id="dpMonths" data-date-format="mm/yyyy" data-date-viewmode="years" data-date-minviewmode="months">
+                                        <input class="form-control" type="text" placeholder="mm/yyyy">
+                                        <span class="input-group-addon add-on">
+                                            <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box -->
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- END DATE PICKER -->
+        <!-- .row -->
+        <div class="row">
+            <!-- .col-lg-12 -->
+            <div class="col-xl-12">
+                <div class="card m-t-35">
+                    <div class="card-header bg-white">
+                        Date Range Picker
+                    </div>
+                    <div class="card-block" id="dateRangePickerBlock">
+                        <div class="row">
+                            <div class="col-lg-6 input_field_sections">
+                                <h5>Input initially empty</h5>
+                                <form>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </span>
+                                        <input type="text" class="form-control" id="date_range" name="date range">
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-lg-6 input_field_sections">
+                                <h5>Pre-defined Ranges & Callback</h5>
+                                <form>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </span>
+                                        <input type="text" class="form-control" id="reportrange" placeholder="dd/mm/yyyy-dd/mm/yyyy">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="row m-b-20">
+                            <div class="col-lg-6 input_field_sections">
+                                <h5>Reservation dates</h5>
+                                <form>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </span>
+                                        <input type="text" name="reservation" id="reservation" class="form-control" value="01/10/2016 - 02/10/2016">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.block -->
+                </div>
+                <!-- /.box -->
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <!--END DATE RANGE PICKER -->
+        <!-- BEGIN TIME PICKER -->
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card m-t-35">
+                    <div class="card-header bg-white">
+                        Color Picker
+                    </div>
+                    <div class="card-block" id="colorPickerBlock">
+                        <div class="row m-b-20">
+                            <div class="col-lg-6 col-xs-12 input_field_sections">
+                                <h5>Picker with hexa format</h5>
+                                <form>
+                                    <input type="text" class="form-control" placeholder="#8fff00" id="cp1">
+                                </form>
+                            </div>
+                            <div class="col-lg-6 col-xs-12 input_field_sections">
+                                <h5>Picker with the rgba format</h5>
+                                <form>
+                                    <input type="text" class="form-control" placeholder="rgb(0,194,255,1)" id="cp-2" data-color-format="rgba">
+                                </form>
+                            </div>
+                            <div class="col-lg-6 col-xs-12 input_field_sections">
+                                <h5>As component</h5>
+                                <form>
+                                    <div class="input-group color">
+                                        <input type="text" class="form-control" placeholder="#eee" data-color-format="hash" id="cp3">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-crosshairs" aria-hidden="true"></i>
+                                        </span>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-lg-6 col-xs-12 input_field_sections">
+                                <h5>Using events to work with the color</h5>
+                                <form>
+                                    <a href="#" class="btn btn-warning" id="cp4" data-color-format="hex">Change background color</a>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.BODY -->
+                </div>
+                <!-- /.box -->
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <!-- END COLOR PICKER -->
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card m-t-35">
+                    <div class="card-header bg-white">
+                        Time Picker
+                    </div>
+                    <div class="card-block time_picker_section">
+                        <div class="row m-b-20">
+                            <div class="col-lg-6 input_field_sections">
+                                <h5>24hr Timepicker</h5>
+                                <form>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" data-field="time">
+                                        <span class="input-group-addon add-on">
+                                            <i class="fa fa-clock-o"></i>
+                                        </span>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-lg-6 input_field_sections">
+                                <h5>Set Time</h5>
+                                <form>
+                                    <div class="input-group">
+                                        <input id="setTimeExample" type="text" class="time ui-timepicker-input form-control" autocomplete="off">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-primary" id="setTimeButton" type="button">Set current time</button>
+                                        </span>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-lg-6 input_field_sections">
+                                <h5>Default Clockpicker</h5>
+                                <form>
+                                    <div class="input-group clockpicker1">
+                                        <input type="text" class="form-control" data-placement="top" data-align="top" value="10:30">
+                                        <span class="input-group-addon add-on">
+                                            <i class="fa fa-clock-o"></i>
+                                        </span>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-lg-6 input_field_sections">
+                                <h5>Auto Close</h5>
+                                <form>
+                                    <div class="input-group clockpicker2" data-align="top" data-placement="top" data-autoclose="true">
+                                        <input type="text" class="form-control" value="15:14">
+                                        <span class="input-group-addon add-on">
+                                            <i class="fa fa-clock-o"></i>
+                                        </span>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-lg-6 input_field_sections">
+                                <h5>Align Top</h5>
+                                <form>
+                                    <div class="input-group">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="single_input2" data-placement="top" data-align="top" value="13:14">
+                                            <span class="input-group-addon add-on">
+                                                <i class="fa fa-clock-o"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-lg-6 input_field_sections">
+                                <h5>Time Now</h5>
+                                <form>
+                                    <div class="input-group">
+                                        <div class="input-group">
+                                            <input class="form-control" id="single_input1" data-placement="top" data-align="top" placeholder="Now">
+                                            <span class="input-group-btn">
+                                                <button type="button" id="check_minutes" class="btn btn-primary">Check the minutes</button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END TIME PICKER -->
+        <!-- .row -->
+    </div>
+    <!-- /.inner -->
+</div>
+<!-- /.outer -->
+            </div>
+<!-- /#content -->
+        </div>
+<!--wrapper-->
+<div id="right">
+    <div class="right_content">
+        <div class="alert alert-success white_txt">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>
+                Welcome Micheal
+                <br />
+            </strong>
+            Set Your Skin Here. Checkout Admin Statistics. Good Day!.
+        </div>
+        <div class="well well-small dark">
+            <div class="xs_skin_hide hidden-sm-up toggle-right"><i class="fa fa-cog"></i></div>
+            <h4 class="brown_txt">
+                <span class="fa-stack fa-sm">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-paint-brush fa-stack-1x fa-inverse"></i>
+                </span>
+                Skins
+            </h4>
+            <br />
+
+            <div class="skinmulti_btn" onclick="javascript:loadjscssfile('blue_black_skin.html','css')">
+                <div class="skin_blue skin_size"></div>
+                <div class="skin_black skin_size"></div>
+            </div>
+            <div class="skinmulti_btn" onclick="javascript:loadjscssfile('green_black_skin.html','css')">
+                <div class="skin_green skin_size"></div>
+                <div class="skin_black skin_size"></div>
+            </div>
+            <div class="skinmulti_btn"
+                 onclick="javascript:loadjscssfile('purple_black_skin.html','css')">
+                <div class="skin_purple skin_size"></div>
+                <div class="skin_black skin_size"></div>
+            </div>
+            <div class="skinmulti_btn"
+                 onclick="javascript:loadjscssfile('orange_black_skin.html','css')">
+                <div class="skin_orange skin_size"></div>
+                <div class="skin_black skin_size"></div>
+            </div>
+            <div class="skinmulti_btn" onclick="javascript:loadjscssfile('red_black_skin.html','css')">
+                <div class="skin_red skin_size"></div>
+                <div class="skin_black skin_size"></div>
+            </div>
+            <div class="skinmulti_btn" onclick="javascript:loadjscssfile('mint_black_skin.html','css')">
+                <div class="skin_mint skin_size"></div>
+                <div class="skin_black skin_size"></div>
+            </div>
+            <div class="skinmulti_btn" onclick="javascript:loadjscssfile('brown_black_skin.html','css')">
+                <div class="skin_brown skin_size"></div>
+                <div class="skin_black skin_size"></div>
+            </div>
+            <div class="skinmulti_btn" onclick="javascript:loadjscssfile('black_skin.html','css')">
+                <div class="skin_black skin_size"></div>
+                <div class="skin_black skin_size"></div>
+            </div>
+            <div class="skin_btn skin_blue"
+                 onclick="javascript:loadjscssfile('blue_skin.html','css')"></div>
+            <div class="skin_btn skin_green"
+                 onclick="javascript:loadjscssfile('green_skin.html','css')"></div>
+            <div class="skin_btn skin_purple"
+                 onclick="javascript:loadjscssfile('purple_skin.html','css')"></div>
+            <div class="skin_btn skin_orange"
+                 onclick="javascript:loadjscssfile('orange_skin.html','css')"></div>
+            <div class="skin_btn skin_red"
+                 onclick="javascript:loadjscssfile('red_skin.html','css')"></div>
+            <div class="skin_btn skin_mint"
+                 onclick="javascript:loadjscssfile('mint_skin.html','css')"></div>
+            <div class="skin_btn skin_brown"
+                 onclick="javascript:loadjscssfile('brown_skin.html','css')"></div>
+            <div class="skin_btn skin_black"
+                 onclick="javascript:loadjscssfile('black_skin.html','css')"></div>
+
+        </div>
+        <div class="well well-small dark">
+            <h4 class="brown_txt margin15_bottom">
+                <img src="img/admin.jpg" width="32" height="32" class="rounded-circle avatar-img"
+                     alt="avatar"> &nbsp;Admin
+                Statistics
+            </h4>
+            <br />
+            <ul class="list-unstyled">
+                <li class="green_txt margin15_bottom">
+                    <span class="fa-stack fa-sm">
+                        <i class="fa fa-circle fa-stack-2x text-mint"></i>
+                        <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
+                    </span>
+                    &nbsp; Last Login
+                    <span class="inlinesparkline float-xs-right">2hrs Back</span>
+                </li>
+                <li class="warning_txt margin15_bottom">
+                    <span class="fa-stack fa-sm">
+                        <i class="fa fa-circle fa-stack-2x text-brown"></i>
+                        <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                    </span>
+                    &nbsp; Pending Tasks
+                    <span class="dynamicsparkline float-xs-right">12</span>
+                </li>
+                <li class="primary_txt margin15_bottom">
+                    <span class="fa-stack fa-sm">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fa fa-cloud fa-stack-1x fa-inverse"></i>
+                    </span>
+                    &nbsp; Weather Today
+                    <span class="dynamicbar float-xs-right">Rainy</span>
+                </li>
+                <li class="margin15_bottom">
+                    <span class="fa-stack fa-sm">
+                        <i class="fa fa-circle fa-stack-2x text-brown"></i>
+                        <i class="fa fa-calendar fa-stack-1x fa-inverse"></i>
+                    </span>
+                    &nbsp; Events
+                    <span class="inlinebar float-xs-right">Team Out</span>
+                </li>
+                <li class="success_txt margin15_bottom">
+                    <span class="fa-stack fa-sm">
+                        <i class="fa fa-circle fa-stack-2x text-success"></i>
+                        <i class="fa fa-bell fa-stack-1x fa-inverse"></i>
+                    </span>
+                    &nbsp; Notifications
+                    <span class="inlinebar float-xs-right">5</span>
+                </li>
+            </ul>
+        </div>
+        <div class="well well-small dark right_progressbar_section">
+            <h4 class="brown_txt">
+                <span class="fa-stack fa-sm">
+                    <i class="fa fa-circle fa-stack-2x text-brown"></i>
+                    <i class="fa fa-hand-o-down fa-stack-1x fa-inverse"></i>
+                </span>
+                Alerts
+            </h4>
+            <br />
+            <span>Sales Improvement</span>
+            <span class="float-xs-right">
+                <small>20%</small>
+            </span>
+            <div class="progress xs">
+                <progress class="progress progress-striped progress-primary" value="20"
+                          max="100"></progress>
+            </div>
+            <span>Server Load</span>
+            <span class="float-xs-right">
+                <small>80%</small>
+            </span>
+            <div class="progress xs">
+                <progress class="progress  progress-striped progress-mint" value="80"
+                          max="100"></progress>
+            </div>
+            <span>Traffic Improvement</span>
+            <span class="float-xs-right">
+                <small>55%</small>
+            </span>
+            <div class="progress xs">
+                <progress class="progress  progress-striped progress-danger" value="55"
+                          max="100"></progress>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- # right side -->
+    </div>
+
+
+<!--OLIVER-->
+
+
+
+@model DemapAdmin.Models.tbl_denuncias
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>tbl_denuncias</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        <div class="form-group">
+            @Html.LabelFor(model => model.Id, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Id)
+                @Html.ValidationMessageFor(model => model.Id)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CedulaDenunciante, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CedulaDenunciante)
+                @Html.ValidationMessageFor(model => model.CedulaDenunciante)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Producto, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Producto)
+                @Html.ValidationMessageFor(model => model.Producto)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Establecimiento, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Establecimiento)
+                @Html.ValidationMessageFor(model => model.Establecimiento)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FechaCreacion, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FechaCreacion)
+                @Html.ValidationMessageFor(model => model.FechaCreacion)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Activo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Activo)
+                @Html.ValidationMessageFor(model => model.Activo)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

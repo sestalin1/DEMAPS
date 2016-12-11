@@ -27,6 +27,8 @@ C:\Users\HPs\Source\Repos\DEMAPS\DemapAdmin\bin\System.Web.WebPages.Deployment.d
 C:\Users\HPs\Source\Repos\DEMAPS\DemapAdmin\bin\System.Web.WebPages.dll
 C:\Users\HPs\Source\Repos\DEMAPS\DemapAdmin\bin\System.Web.WebPages.Razor.dll
 C:\Users\HPs\Source\Repos\DEMAPS\DemapAdmin\bin\WebGrease.dll
+C:\Users\HPs\Source\Repos\DEMAPS\DemapAdmin\bin\EntityFramework.xml
+C:\Users\HPs\Source\Repos\DEMAPS\DemapAdmin\bin\EntityFramework.SqlServer.xml
 C:\Users\HPs\Source\Repos\DEMAPS\DemapAdmin\bin\System.Web.Helpers.xml
 C:\Users\HPs\Source\Repos\DEMAPS\DemapAdmin\bin\System.Web.Mvc.xml
 C:\Users\HPs\Source\Repos\DEMAPS\DemapAdmin\bin\System.Web.Optimization.xml
@@ -36,8 +38,6 @@ C:\Users\HPs\Source\Repos\DEMAPS\DemapAdmin\bin\System.Web.WebPages.Deployment.x
 C:\Users\HPs\Source\Repos\DEMAPS\DemapAdmin\bin\System.Web.WebPages.Razor.xml
 C:\Users\HPs\Source\Repos\DEMAPS\DemapAdmin\bin\Newtonsoft.Json.xml
 C:\Users\HPs\Source\Repos\DEMAPS\DemapAdmin\bin\Antlr3.Runtime.pdb
-C:\Users\HPs\Source\Repos\DEMAPS\DemapAdmin\bin\EntityFramework.xml
-C:\Users\HPs\Source\Repos\DEMAPS\DemapAdmin\bin\EntityFramework.SqlServer.xml
 C:\Users\HPs\Source\Repos\DEMAPS\DemapAdmin\bin\Microsoft.AspNet.Identity.Core.xml
 C:\Users\HPs\Source\Repos\DEMAPS\DemapAdmin\bin\Microsoft.AspNet.Identity.Owin.xml
 C:\Users\HPs\Source\Repos\DEMAPS\DemapAdmin\bin\Microsoft.AspNet.Identity.EntityFramework.xml
@@ -50,6 +50,6 @@ C:\Users\HPs\Source\Repos\DEMAPS\DemapAdmin\bin\Microsoft.Owin.Security.OAuth.xm
 C:\Users\HPs\Source\Repos\DEMAPS\DemapAdmin\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\HPs\Source\Repos\DEMAPS\DemapAdmin\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\HPs\Source\Repos\DEMAPS\DemapAdmin\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\HPs\Source\Repos\DEMAPS\DemapAdmin\obj\Debug\DemapAdmin.csprojResolveAssemblyReference.cache
 C:\Users\HPs\Source\Repos\DEMAPS\DemapAdmin\obj\Debug\DemapAdmin.dll
 C:\Users\HPs\Source\Repos\DEMAPS\DemapAdmin\obj\Debug\DemapAdmin.pdb
+C:\Users\HPs\Source\Repos\DEMAPS\DemapAdmin\obj\Debug\DemapAdmin.csprojResolveAssemblyReference.cache

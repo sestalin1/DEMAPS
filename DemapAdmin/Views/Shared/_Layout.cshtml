@@ -11,6 +11,10 @@
         {
             @ViewBag.Title@: -  DEMAPS
         }
+        else
+        {
+            <b>DEMAPS</b>
+        }
     </title>
 
     @Html.Partial("_Head")
@@ -37,7 +41,7 @@
           top: 48%;
           background-position: center;
         z-index: 999999">
-            <img src="~Content/img/loader.gif" style="width: 40px;" alt="loading...">
+            <img src="~/Content/img/loader.gif" style="width: 40px;" alt="loading...">
         </div>
     </div>
 
@@ -54,10 +58,10 @@
             <div id="content" class="bg-container">
                 <header class="head">
                     <div class="main-bar row">
-                        <div class="col-xs-6">
-                            <h4 class="m-t-5">
-                                <i class="fa fa-home"></i>
-                                Dashboard
+                        <div class="col-xs-">
+                            <h4 class="m-t-5 text-gray-dark">
+                                <i class="fa fa-camera"></i>
+                                 PLATAFORMA DE ADMINISTRACIÓN DE DENUNCIAS SANITARIAS
                             </h4>
                         </div>
                     </div>
@@ -72,6 +76,7 @@
             </div>
 
             @Html.Partial("_Footer_scripts")
+            @RenderSection("scripts", required: false)
 </body>
 
 </html>

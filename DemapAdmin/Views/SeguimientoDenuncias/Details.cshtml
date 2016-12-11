@@ -1,0 +1,98 @@
+﻿@model DemapAdmin.Models.tbl_seguimiento_denuncias
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tbl_seguimiento_denuncias</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaCreacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaCreacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreadoPor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreadoPor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UltModifFecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UltModifFecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UltModifUsuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UltModifUsuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Activo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Activo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_comentarios_denuncias.Comentario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_comentarios_denuncias.Comentario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_denuncias.CedulaDenunciante)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_denuncias.CedulaDenunciante)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_estados_denuncias.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_estados_denuncias.Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_usuarios.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_usuarios.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_status_denuncias.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_status_denuncias.Status)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

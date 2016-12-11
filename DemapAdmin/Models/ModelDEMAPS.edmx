@@ -1,0 +1,1072 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DEMAPSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_comentarios_denuncias">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Comentario" Type="text" />
+          <Property Name="FechaCreacion" Type="date" />
+          <Property Name="CreadoPor" Type="nvarchar" MaxLength="50" />
+          <Property Name="Activo" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="tbl_denuncias">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="TipoDenunciaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CedulaDenunciante" Type="nvarchar" MaxLength="50" />
+          <Property Name="Producto" Type="nvarchar" MaxLength="50" />
+          <Property Name="Establecimiento" Type="text" />
+          <Property Name="FechaCreacion" Type="date" />
+          <Property Name="Activo" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="tbl_estados_denuncias">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Estado" Type="nvarchar" MaxLength="50" />
+          <Property Name="Descripcion" Type="text" />
+          <Property Name="FechaCreacion" Type="date" />
+          <Property Name="CreadoPor" Type="nvarchar" MaxLength="50" />
+          <Property Name="Activo" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="tbl_evidencias_denuncias">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DenunciaID" Type="int" />
+          <Property Name="ImagenDenuncia" Type="text" />
+          <Property Name="VideoDenuncia" Type="text" />
+          <Property Name="FechaCreacion" Type="date" />
+          <Property Name="Activo" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="tbl_modulos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Modulo" Type="nvarchar" MaxLength="50" />
+          <Property Name="FechaCreacion" Type="date" />
+          <Property Name="CreadoPor" Type="nvarchar" MaxLength="50" />
+          <Property Name="Activo" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="tbl_perfiles_permisos_modulos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="PerfilUsuarioID" Type="int" />
+          <Property Name="ModuloID" Type="int" />
+          <Property Name="FechaCreacion" Type="date" />
+          <Property Name="CreadoPor" Type="nvarchar" MaxLength="50" />
+          <Property Name="Activo" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="tbl_perfiles_usuarios">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Perfil" Type="nvarchar" MaxLength="50" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="50" />
+          <Property Name="FechaCreacion" Type="date" />
+          <Property Name="CreadoPor" Type="nvarchar" MaxLength="50" />
+          <Property Name="Activo" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="tbl_seguimiento_denuncias">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DenunciaID" Type="int" />
+          <Property Name="ComentarioID" Type="int" />
+          <Property Name="AsignadaUsuarioID" Type="int" />
+          <Property Name="EstadoDenunciaID" Type="int" />
+          <Property Name="StatusDenunciaID" Type="int" />
+          <Property Name="FechaCreacion" Type="date" />
+          <Property Name="CreadoPor" Type="nvarchar" MaxLength="50" />
+          <Property Name="UltModifFecha" Type="date" />
+          <Property Name="UltModifUsuario" Type="nvarchar" MaxLength="50" />
+          <Property Name="Activo" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="tbl_status_denuncias">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="Descripcion" Type="text" />
+          <Property Name="FechaCreacion" Type="date" />
+          <Property Name="CreadoPor" Type="nvarchar" MaxLength="50" />
+          <Property Name="Activo" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="tbl_tipos_denuncias">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tipo" Type="nchar" MaxLength="10" />
+          <Property Name="Descripcion" Type="text" />
+          <Property Name="FechaCreacion" Type="date" />
+          <Property Name="CreadoPor" Type="nvarchar" MaxLength="50" />
+          <Property Name="Activo" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="tbl_usuarios">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PerfilUsuarioID" Type="int" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="100" />
+          <Property Name="Apellido" Type="nvarchar" MaxLength="100" />
+          <Property Name="Usuario" Type="nvarchar" MaxLength="50" />
+          <Property Name="Contrasena" Type="nvarchar" MaxLength="50" />
+          <Property Name="FechaCreacion" Type="date" />
+          <Property Name="CreadoPor" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Activo" Type="tinyint" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DEMAPS.dbo.View_denuncias_falladas' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_denuncias_falladas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="CedulaDenunciante" Type="nvarchar" MaxLength="50" />
+          <Property Name="Producto" Type="nvarchar" MaxLength="50" />
+          <Property Name="Establecimiento" Type="text" />
+          <Property Name="Tipo" Type="nchar" MaxLength="10" />
+          <Property Name="Estado" Type="nvarchar" MaxLength="50" />
+          <Property Name="ImagenDenuncia" Type="text" />
+          <Property Name="VideoDenuncia" Type="text" />
+          <Property Name="FechaCreacion" Type="date" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DEMAPS.dbo.View_denuncias_finalizadas' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_denuncias_finalizadas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="CedulaDenunciante" Type="nvarchar" MaxLength="50" />
+          <Property Name="Producto" Type="nvarchar" MaxLength="50" />
+          <Property Name="Establecimiento" Type="text" />
+          <Property Name="Tipo" Type="nchar" MaxLength="10" />
+          <Property Name="Estado" Type="nvarchar" MaxLength="50" />
+          <Property Name="ImagenDenuncia" Type="text" />
+          <Property Name="VideoDenuncia" Type="text" />
+          <Property Name="FechaCreacion" Type="date" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DEMAPS.dbo.View_denuncias_investigacion' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_denuncias_investigacion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="CedulaDenunciante" Type="nvarchar" MaxLength="50" />
+          <Property Name="Producto" Type="nvarchar" MaxLength="50" />
+          <Property Name="Establecimiento" Type="text" />
+          <Property Name="Tipo" Type="nchar" MaxLength="10" />
+          <Property Name="Estado" Type="nvarchar" MaxLength="50" />
+          <Property Name="ImagenDenuncia" Type="text" />
+          <Property Name="VideoDenuncia" Type="text" />
+          <Property Name="FechaCreacion" Type="date" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DEMAPS.dbo.View_denuncias_recibidas' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_denuncias_recibidas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="CedulaDenunciante" Type="nvarchar" MaxLength="50" />
+          <Property Name="Producto" Type="nvarchar" MaxLength="50" />
+          <Property Name="Establecimiento" Type="text" />
+          <Property Name="Tipo" Type="nchar" MaxLength="10" />
+          <Property Name="Estado" Type="nvarchar" MaxLength="50" />
+          <Property Name="ImagenDenuncia" Type="text" />
+          <Property Name="VideoDenuncia" Type="text" />
+          <Property Name="FechaCreacion" Type="date" />
+        </EntityType>
+        <Association Name="FK_tbl_denuncias_tbl_tipos_denuncias">
+          <End Role="tbl_tipos_denuncias" Type="Self.tbl_tipos_denuncias" Multiplicity="1" />
+          <End Role="tbl_denuncias" Type="Self.tbl_denuncias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_tipos_denuncias">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_denuncias">
+              <PropertyRef Name="TipoDenunciaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_evidencias_denuncias_tbl_evidencias_denuncias">
+          <End Role="tbl_evidencias_denuncias" Type="Self.tbl_evidencias_denuncias" Multiplicity="0..1" />
+          <End Role="tbl_evidencias_denuncias1" Type="Self.tbl_evidencias_denuncias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_evidencias_denuncias">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_evidencias_denuncias1">
+              <PropertyRef Name="DenunciaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_perfiles_permisos_ModuloID">
+          <End Role="tbl_modulos" Type="Self.tbl_modulos" Multiplicity="0..1" />
+          <End Role="tbl_perfiles_permisos_modulos" Type="Self.tbl_perfiles_permisos_modulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_modulos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_perfiles_permisos_modulos">
+              <PropertyRef Name="ModuloID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_perfiles_permisos_modulos_PerfilUsuarioID">
+          <End Role="tbl_perfiles_usuarios" Type="Self.tbl_perfiles_usuarios" Multiplicity="0..1" />
+          <End Role="tbl_perfiles_permisos_modulos" Type="Self.tbl_perfiles_permisos_modulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_perfiles_usuarios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_perfiles_permisos_modulos">
+              <PropertyRef Name="PerfilUsuarioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_perfiles_usuarios_tbl_perfiles_usuarios">
+          <End Role="tbl_perfiles_usuarios" Type="Self.tbl_perfiles_usuarios" Multiplicity="1" />
+          <End Role="tbl_perfiles_usuarios1" Type="Self.tbl_perfiles_usuarios" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_perfiles_usuarios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_perfiles_usuarios1">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_seguimiento_denuncias_AsignadaUsuarioID">
+          <End Role="tbl_usuarios" Type="Self.tbl_usuarios" Multiplicity="0..1" />
+          <End Role="tbl_seguimiento_denuncias" Type="Self.tbl_seguimiento_denuncias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_usuarios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_seguimiento_denuncias">
+              <PropertyRef Name="AsignadaUsuarioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_seguimiento_denuncias_DenunciaID">
+          <End Role="tbl_denuncias" Type="Self.tbl_denuncias" Multiplicity="0..1" />
+          <End Role="tbl_seguimiento_denuncias" Type="Self.tbl_seguimiento_denuncias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_denuncias">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_seguimiento_denuncias">
+              <PropertyRef Name="DenunciaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_seguimiento_denuncias_EstadoDenunciaID">
+          <End Role="tbl_estados_denuncias" Type="Self.tbl_estados_denuncias" Multiplicity="0..1" />
+          <End Role="tbl_seguimiento_denuncias" Type="Self.tbl_seguimiento_denuncias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_estados_denuncias">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_seguimiento_denuncias">
+              <PropertyRef Name="EstadoDenunciaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_seguimiento_denuncias_StatusID">
+          <End Role="tbl_status_denuncias" Type="Self.tbl_status_denuncias" Multiplicity="0..1" />
+          <End Role="tbl_seguimiento_denuncias" Type="Self.tbl_seguimiento_denuncias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_status_denuncias">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_seguimiento_denuncias">
+              <PropertyRef Name="StatusDenunciaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_seguimiento_denuncias_tbl_ComentarioID">
+          <End Role="tbl_comentarios_denuncias" Type="Self.tbl_comentarios_denuncias" Multiplicity="0..1" />
+          <End Role="tbl_seguimiento_denuncias" Type="Self.tbl_seguimiento_denuncias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_comentarios_denuncias">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_seguimiento_denuncias">
+              <PropertyRef Name="ComentarioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_usuarios_tbl_perfilUsuarioID">
+          <End Role="tbl_perfiles_usuarios" Type="Self.tbl_perfiles_usuarios" Multiplicity="0..1" />
+          <End Role="tbl_usuarios" Type="Self.tbl_usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_perfiles_usuarios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_usuarios">
+              <PropertyRef Name="PerfilUsuarioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DEMAPSModelStoreContainer">
+          <EntitySet Name="tbl_comentarios_denuncias" EntityType="Self.tbl_comentarios_denuncias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_denuncias" EntityType="Self.tbl_denuncias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_estados_denuncias" EntityType="Self.tbl_estados_denuncias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_evidencias_denuncias" EntityType="Self.tbl_evidencias_denuncias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_modulos" EntityType="Self.tbl_modulos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_perfiles_permisos_modulos" EntityType="Self.tbl_perfiles_permisos_modulos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_perfiles_usuarios" EntityType="Self.tbl_perfiles_usuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_seguimiento_denuncias" EntityType="Self.tbl_seguimiento_denuncias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_status_denuncias" EntityType="Self.tbl_status_denuncias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_tipos_denuncias" EntityType="Self.tbl_tipos_denuncias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_usuarios" EntityType="Self.tbl_usuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="View_denuncias_falladas" EntityType="Self.View_denuncias_falladas" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_denuncias_falladas].[Id] AS [Id], 
+    [View_denuncias_falladas].[CedulaDenunciante] AS [CedulaDenunciante], 
+    [View_denuncias_falladas].[Producto] AS [Producto], 
+    [View_denuncias_falladas].[Establecimiento] AS [Establecimiento], 
+    [View_denuncias_falladas].[Tipo] AS [Tipo], 
+    [View_denuncias_falladas].[Estado] AS [Estado], 
+    [View_denuncias_falladas].[ImagenDenuncia] AS [ImagenDenuncia], 
+    [View_denuncias_falladas].[VideoDenuncia] AS [VideoDenuncia], 
+    [View_denuncias_falladas].[FechaCreacion] AS [FechaCreacion]
+    FROM [dbo].[View_denuncias_falladas] AS [View_denuncias_falladas]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_denuncias_finalizadas" EntityType="Self.View_denuncias_finalizadas" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_denuncias_finalizadas].[Id] AS [Id], 
+    [View_denuncias_finalizadas].[CedulaDenunciante] AS [CedulaDenunciante], 
+    [View_denuncias_finalizadas].[Producto] AS [Producto], 
+    [View_denuncias_finalizadas].[Establecimiento] AS [Establecimiento], 
+    [View_denuncias_finalizadas].[Tipo] AS [Tipo], 
+    [View_denuncias_finalizadas].[Estado] AS [Estado], 
+    [View_denuncias_finalizadas].[ImagenDenuncia] AS [ImagenDenuncia], 
+    [View_denuncias_finalizadas].[VideoDenuncia] AS [VideoDenuncia], 
+    [View_denuncias_finalizadas].[FechaCreacion] AS [FechaCreacion]
+    FROM [dbo].[View_denuncias_finalizadas] AS [View_denuncias_finalizadas]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_denuncias_investigacion" EntityType="Self.View_denuncias_investigacion" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_denuncias_investigacion].[Id] AS [Id], 
+    [View_denuncias_investigacion].[CedulaDenunciante] AS [CedulaDenunciante], 
+    [View_denuncias_investigacion].[Producto] AS [Producto], 
+    [View_denuncias_investigacion].[Establecimiento] AS [Establecimiento], 
+    [View_denuncias_investigacion].[Tipo] AS [Tipo], 
+    [View_denuncias_investigacion].[Estado] AS [Estado], 
+    [View_denuncias_investigacion].[ImagenDenuncia] AS [ImagenDenuncia], 
+    [View_denuncias_investigacion].[VideoDenuncia] AS [VideoDenuncia], 
+    [View_denuncias_investigacion].[FechaCreacion] AS [FechaCreacion]
+    FROM [dbo].[View_denuncias_investigacion] AS [View_denuncias_investigacion]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_denuncias_recibidas" EntityType="Self.View_denuncias_recibidas" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_denuncias_recibidas].[Id] AS [Id], 
+    [View_denuncias_recibidas].[CedulaDenunciante] AS [CedulaDenunciante], 
+    [View_denuncias_recibidas].[Producto] AS [Producto], 
+    [View_denuncias_recibidas].[Establecimiento] AS [Establecimiento], 
+    [View_denuncias_recibidas].[Tipo] AS [Tipo], 
+    [View_denuncias_recibidas].[Estado] AS [Estado], 
+    [View_denuncias_recibidas].[ImagenDenuncia] AS [ImagenDenuncia], 
+    [View_denuncias_recibidas].[VideoDenuncia] AS [VideoDenuncia], 
+    [View_denuncias_recibidas].[FechaCreacion] AS [FechaCreacion]
+    FROM [dbo].[View_denuncias_recibidas] AS [View_denuncias_recibidas]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_tbl_denuncias_tbl_tipos_denuncias" Association="Self.FK_tbl_denuncias_tbl_tipos_denuncias">
+            <End Role="tbl_tipos_denuncias" EntitySet="tbl_tipos_denuncias" />
+            <End Role="tbl_denuncias" EntitySet="tbl_denuncias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_evidencias_denuncias_tbl_evidencias_denuncias" Association="Self.FK_tbl_evidencias_denuncias_tbl_evidencias_denuncias">
+            <End Role="tbl_evidencias_denuncias" EntitySet="tbl_evidencias_denuncias" />
+            <End Role="tbl_evidencias_denuncias1" EntitySet="tbl_evidencias_denuncias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_perfiles_permisos_ModuloID" Association="Self.FK_tbl_perfiles_permisos_ModuloID">
+            <End Role="tbl_modulos" EntitySet="tbl_modulos" />
+            <End Role="tbl_perfiles_permisos_modulos" EntitySet="tbl_perfiles_permisos_modulos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_perfiles_permisos_modulos_PerfilUsuarioID" Association="Self.FK_tbl_perfiles_permisos_modulos_PerfilUsuarioID">
+            <End Role="tbl_perfiles_usuarios" EntitySet="tbl_perfiles_usuarios" />
+            <End Role="tbl_perfiles_permisos_modulos" EntitySet="tbl_perfiles_permisos_modulos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_perfiles_usuarios_tbl_perfiles_usuarios" Association="Self.FK_tbl_perfiles_usuarios_tbl_perfiles_usuarios">
+            <End Role="tbl_perfiles_usuarios" EntitySet="tbl_perfiles_usuarios" />
+            <End Role="tbl_perfiles_usuarios1" EntitySet="tbl_perfiles_usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_seguimiento_denuncias_AsignadaUsuarioID" Association="Self.FK_tbl_seguimiento_denuncias_AsignadaUsuarioID">
+            <End Role="tbl_usuarios" EntitySet="tbl_usuarios" />
+            <End Role="tbl_seguimiento_denuncias" EntitySet="tbl_seguimiento_denuncias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_seguimiento_denuncias_DenunciaID" Association="Self.FK_tbl_seguimiento_denuncias_DenunciaID">
+            <End Role="tbl_denuncias" EntitySet="tbl_denuncias" />
+            <End Role="tbl_seguimiento_denuncias" EntitySet="tbl_seguimiento_denuncias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_seguimiento_denuncias_EstadoDenunciaID" Association="Self.FK_tbl_seguimiento_denuncias_EstadoDenunciaID">
+            <End Role="tbl_estados_denuncias" EntitySet="tbl_estados_denuncias" />
+            <End Role="tbl_seguimiento_denuncias" EntitySet="tbl_seguimiento_denuncias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_seguimiento_denuncias_StatusID" Association="Self.FK_tbl_seguimiento_denuncias_StatusID">
+            <End Role="tbl_status_denuncias" EntitySet="tbl_status_denuncias" />
+            <End Role="tbl_seguimiento_denuncias" EntitySet="tbl_seguimiento_denuncias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_seguimiento_denuncias_tbl_ComentarioID" Association="Self.FK_tbl_seguimiento_denuncias_tbl_ComentarioID">
+            <End Role="tbl_comentarios_denuncias" EntitySet="tbl_comentarios_denuncias" />
+            <End Role="tbl_seguimiento_denuncias" EntitySet="tbl_seguimiento_denuncias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_usuarios_tbl_perfilUsuarioID" Association="Self.FK_tbl_usuarios_tbl_perfilUsuarioID">
+            <End Role="tbl_perfiles_usuarios" EntitySet="tbl_perfiles_usuarios" />
+            <End Role="tbl_usuarios" EntitySet="tbl_usuarios" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DEMAPSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_comentarios_denuncias">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Comentario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
+          <Property Name="CreadoPor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Activo" Type="Byte" />
+          <NavigationProperty Name="tbl_seguimiento_denuncias" Relationship="Self.FK_tbl_seguimiento_denuncias_tbl_ComentarioID" FromRole="tbl_comentarios_denuncias" ToRole="tbl_seguimiento_denuncias" />
+        </EntityType>
+        <EntityType Name="tbl_denuncias">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="TipoDenunciaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CedulaDenunciante" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Producto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Establecimiento" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
+          <Property Name="Activo" Type="Byte" />
+          <NavigationProperty Name="tbl_tipos_denuncias" Relationship="Self.FK_tbl_denuncias_tbl_tipos_denuncias" FromRole="tbl_denuncias" ToRole="tbl_tipos_denuncias" />
+          <NavigationProperty Name="tbl_seguimiento_denuncias" Relationship="Self.FK_tbl_seguimiento_denuncias_DenunciaID" FromRole="tbl_denuncias" ToRole="tbl_seguimiento_denuncias" />
+        </EntityType>
+        <EntityType Name="tbl_estados_denuncias">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
+          <Property Name="CreadoPor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Activo" Type="Byte" />
+          <NavigationProperty Name="tbl_seguimiento_denuncias" Relationship="Self.FK_tbl_seguimiento_denuncias_EstadoDenunciaID" FromRole="tbl_estados_denuncias" ToRole="tbl_seguimiento_denuncias" />
+        </EntityType>
+        <EntityType Name="tbl_evidencias_denuncias">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DenunciaID" Type="Int32" />
+          <Property Name="ImagenDenuncia" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="VideoDenuncia" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
+          <Property Name="Activo" Type="Byte" />
+          <NavigationProperty Name="tbl_evidencias_denuncias1" Relationship="Self.FK_tbl_evidencias_denuncias_tbl_evidencias_denuncias" FromRole="tbl_evidencias_denuncias" ToRole="tbl_evidencias_denuncias1" />
+          <NavigationProperty Name="tbl_evidencias_denuncias2" Relationship="Self.FK_tbl_evidencias_denuncias_tbl_evidencias_denuncias" FromRole="tbl_evidencias_denuncias1" ToRole="tbl_evidencias_denuncias" />
+        </EntityType>
+        <EntityType Name="tbl_modulos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Modulo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
+          <Property Name="CreadoPor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Activo" Type="Byte" />
+          <NavigationProperty Name="tbl_perfiles_permisos_modulos" Relationship="Self.FK_tbl_perfiles_permisos_ModuloID" FromRole="tbl_modulos" ToRole="tbl_perfiles_permisos_modulos" />
+        </EntityType>
+        <EntityType Name="tbl_perfiles_permisos_modulos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="PerfilUsuarioID" Type="Int32" />
+          <Property Name="ModuloID" Type="Int32" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
+          <Property Name="CreadoPor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Activo" Type="Byte" />
+          <NavigationProperty Name="tbl_modulos" Relationship="Self.FK_tbl_perfiles_permisos_ModuloID" FromRole="tbl_perfiles_permisos_modulos" ToRole="tbl_modulos" />
+          <NavigationProperty Name="tbl_perfiles_usuarios" Relationship="Self.FK_tbl_perfiles_permisos_modulos_PerfilUsuarioID" FromRole="tbl_perfiles_permisos_modulos" ToRole="tbl_perfiles_usuarios" />
+        </EntityType>
+        <EntityType Name="tbl_perfiles_usuarios">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Perfil" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
+          <Property Name="CreadoPor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Activo" Type="Byte" />
+          <NavigationProperty Name="tbl_perfiles_permisos_modulos" Relationship="Self.FK_tbl_perfiles_permisos_modulos_PerfilUsuarioID" FromRole="tbl_perfiles_usuarios" ToRole="tbl_perfiles_permisos_modulos" />
+          <NavigationProperty Name="tbl_perfiles_usuarios1" Relationship="Self.FK_tbl_perfiles_usuarios_tbl_perfiles_usuarios" FromRole="tbl_perfiles_usuarios" ToRole="tbl_perfiles_usuarios1" />
+          <NavigationProperty Name="tbl_perfiles_usuarios2" Relationship="Self.FK_tbl_perfiles_usuarios_tbl_perfiles_usuarios" FromRole="tbl_perfiles_usuarios1" ToRole="tbl_perfiles_usuarios" />
+          <NavigationProperty Name="tbl_usuarios" Relationship="Self.FK_tbl_usuarios_tbl_perfilUsuarioID" FromRole="tbl_perfiles_usuarios" ToRole="tbl_usuarios" />
+        </EntityType>
+        <EntityType Name="tbl_seguimiento_denuncias">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DenunciaID" Type="Int32" />
+          <Property Name="ComentarioID" Type="Int32" />
+          <Property Name="AsignadaUsuarioID" Type="Int32" />
+          <Property Name="EstadoDenunciaID" Type="Int32" />
+          <Property Name="StatusDenunciaID" Type="Int32" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
+          <Property Name="CreadoPor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UltModifFecha" Type="DateTime" Precision="0" />
+          <Property Name="UltModifUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Activo" Type="Byte" />
+          <NavigationProperty Name="tbl_comentarios_denuncias" Relationship="Self.FK_tbl_seguimiento_denuncias_tbl_ComentarioID" FromRole="tbl_seguimiento_denuncias" ToRole="tbl_comentarios_denuncias" />
+          <NavigationProperty Name="tbl_denuncias" Relationship="Self.FK_tbl_seguimiento_denuncias_DenunciaID" FromRole="tbl_seguimiento_denuncias" ToRole="tbl_denuncias" />
+          <NavigationProperty Name="tbl_estados_denuncias" Relationship="Self.FK_tbl_seguimiento_denuncias_EstadoDenunciaID" FromRole="tbl_seguimiento_denuncias" ToRole="tbl_estados_denuncias" />
+          <NavigationProperty Name="tbl_usuarios" Relationship="Self.FK_tbl_seguimiento_denuncias_AsignadaUsuarioID" FromRole="tbl_seguimiento_denuncias" ToRole="tbl_usuarios" />
+          <NavigationProperty Name="tbl_status_denuncias" Relationship="Self.FK_tbl_seguimiento_denuncias_StatusID" FromRole="tbl_seguimiento_denuncias" ToRole="tbl_status_denuncias" />
+        </EntityType>
+        <EntityType Name="tbl_status_denuncias">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
+          <Property Name="CreadoPor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Activo" Type="Byte" />
+          <NavigationProperty Name="tbl_seguimiento_denuncias" Relationship="Self.FK_tbl_seguimiento_denuncias_StatusID" FromRole="tbl_status_denuncias" ToRole="tbl_seguimiento_denuncias" />
+        </EntityType>
+        <EntityType Name="tbl_tipos_denuncias">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tipo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
+          <Property Name="CreadoPor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Activo" Type="Byte" />
+          <NavigationProperty Name="tbl_denuncias" Relationship="Self.FK_tbl_denuncias_tbl_tipos_denuncias" FromRole="tbl_tipos_denuncias" ToRole="tbl_denuncias" />
+        </EntityType>
+        <EntityType Name="tbl_usuarios">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PerfilUsuarioID" Type="Int32" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Apellido" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Contrasena" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
+          <Property Name="CreadoPor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Activo" Type="Byte" />
+          <NavigationProperty Name="tbl_perfiles_usuarios" Relationship="Self.FK_tbl_usuarios_tbl_perfilUsuarioID" FromRole="tbl_usuarios" ToRole="tbl_perfiles_usuarios" />
+          <NavigationProperty Name="tbl_seguimiento_denuncias" Relationship="Self.FK_tbl_seguimiento_denuncias_AsignadaUsuarioID" FromRole="tbl_usuarios" ToRole="tbl_seguimiento_denuncias" />
+        </EntityType>
+        <Association Name="FK_tbl_seguimiento_denuncias_tbl_ComentarioID">
+          <End Role="tbl_comentarios_denuncias" Type="Self.tbl_comentarios_denuncias" Multiplicity="0..1" />
+          <End Role="tbl_seguimiento_denuncias" Type="Self.tbl_seguimiento_denuncias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_comentarios_denuncias">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_seguimiento_denuncias">
+              <PropertyRef Name="ComentarioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_denuncias_tbl_tipos_denuncias">
+          <End Role="tbl_tipos_denuncias" Type="Self.tbl_tipos_denuncias" Multiplicity="1" />
+          <End Role="tbl_denuncias" Type="Self.tbl_denuncias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_tipos_denuncias">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_denuncias">
+              <PropertyRef Name="TipoDenunciaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_seguimiento_denuncias_DenunciaID">
+          <End Role="tbl_denuncias" Type="Self.tbl_denuncias" Multiplicity="0..1" />
+          <End Role="tbl_seguimiento_denuncias" Type="Self.tbl_seguimiento_denuncias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_denuncias">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_seguimiento_denuncias">
+              <PropertyRef Name="DenunciaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_seguimiento_denuncias_EstadoDenunciaID">
+          <End Role="tbl_estados_denuncias" Type="Self.tbl_estados_denuncias" Multiplicity="0..1" />
+          <End Role="tbl_seguimiento_denuncias" Type="Self.tbl_seguimiento_denuncias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_estados_denuncias">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_seguimiento_denuncias">
+              <PropertyRef Name="EstadoDenunciaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_evidencias_denuncias_tbl_evidencias_denuncias">
+          <End Role="tbl_evidencias_denuncias" Type="Self.tbl_evidencias_denuncias" Multiplicity="0..1" />
+          <End Role="tbl_evidencias_denuncias1" Type="Self.tbl_evidencias_denuncias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_evidencias_denuncias">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_evidencias_denuncias1">
+              <PropertyRef Name="DenunciaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_perfiles_permisos_ModuloID">
+          <End Role="tbl_modulos" Type="Self.tbl_modulos" Multiplicity="0..1" />
+          <End Role="tbl_perfiles_permisos_modulos" Type="Self.tbl_perfiles_permisos_modulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_modulos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_perfiles_permisos_modulos">
+              <PropertyRef Name="ModuloID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_perfiles_permisos_modulos_PerfilUsuarioID">
+          <End Role="tbl_perfiles_usuarios" Type="Self.tbl_perfiles_usuarios" Multiplicity="0..1" />
+          <End Role="tbl_perfiles_permisos_modulos" Type="Self.tbl_perfiles_permisos_modulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_perfiles_usuarios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_perfiles_permisos_modulos">
+              <PropertyRef Name="PerfilUsuarioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_perfiles_usuarios_tbl_perfiles_usuarios">
+          <End Role="tbl_perfiles_usuarios" Type="Self.tbl_perfiles_usuarios" Multiplicity="1" />
+          <End Role="tbl_perfiles_usuarios1" Type="Self.tbl_perfiles_usuarios" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_perfiles_usuarios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_perfiles_usuarios1">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_usuarios_tbl_perfilUsuarioID">
+          <End Role="tbl_perfiles_usuarios" Type="Self.tbl_perfiles_usuarios" Multiplicity="0..1" />
+          <End Role="tbl_usuarios" Type="Self.tbl_usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_perfiles_usuarios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_usuarios">
+              <PropertyRef Name="PerfilUsuarioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_seguimiento_denuncias_AsignadaUsuarioID">
+          <End Role="tbl_usuarios" Type="Self.tbl_usuarios" Multiplicity="0..1" />
+          <End Role="tbl_seguimiento_denuncias" Type="Self.tbl_seguimiento_denuncias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_usuarios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_seguimiento_denuncias">
+              <PropertyRef Name="AsignadaUsuarioID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_seguimiento_denuncias_StatusID">
+          <End Role="tbl_status_denuncias" Type="Self.tbl_status_denuncias" Multiplicity="0..1" />
+          <End Role="tbl_seguimiento_denuncias" Type="Self.tbl_seguimiento_denuncias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_status_denuncias">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_seguimiento_denuncias">
+              <PropertyRef Name="StatusDenunciaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DEMAPSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_comentarios_denuncias" EntityType="Self.tbl_comentarios_denuncias" />
+          <EntitySet Name="tbl_denuncias" EntityType="Self.tbl_denuncias" />
+          <EntitySet Name="tbl_estados_denuncias" EntityType="Self.tbl_estados_denuncias" />
+          <EntitySet Name="tbl_evidencias_denuncias" EntityType="Self.tbl_evidencias_denuncias" />
+          <EntitySet Name="tbl_modulos" EntityType="Self.tbl_modulos" />
+          <EntitySet Name="tbl_perfiles_permisos_modulos" EntityType="Self.tbl_perfiles_permisos_modulos" />
+          <EntitySet Name="tbl_perfiles_usuarios" EntityType="Self.tbl_perfiles_usuarios" />
+          <EntitySet Name="tbl_seguimiento_denuncias" EntityType="Self.tbl_seguimiento_denuncias" />
+          <EntitySet Name="tbl_status_denuncias" EntityType="Self.tbl_status_denuncias" />
+          <EntitySet Name="tbl_tipos_denuncias" EntityType="Self.tbl_tipos_denuncias" />
+          <EntitySet Name="tbl_usuarios" EntityType="Self.tbl_usuarios" />
+          <AssociationSet Name="FK_tbl_seguimiento_denuncias_tbl_ComentarioID" Association="Self.FK_tbl_seguimiento_denuncias_tbl_ComentarioID">
+            <End Role="tbl_comentarios_denuncias" EntitySet="tbl_comentarios_denuncias" />
+            <End Role="tbl_seguimiento_denuncias" EntitySet="tbl_seguimiento_denuncias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_denuncias_tbl_tipos_denuncias" Association="Self.FK_tbl_denuncias_tbl_tipos_denuncias">
+            <End Role="tbl_tipos_denuncias" EntitySet="tbl_tipos_denuncias" />
+            <End Role="tbl_denuncias" EntitySet="tbl_denuncias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_seguimiento_denuncias_DenunciaID" Association="Self.FK_tbl_seguimiento_denuncias_DenunciaID">
+            <End Role="tbl_denuncias" EntitySet="tbl_denuncias" />
+            <End Role="tbl_seguimiento_denuncias" EntitySet="tbl_seguimiento_denuncias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_seguimiento_denuncias_EstadoDenunciaID" Association="Self.FK_tbl_seguimiento_denuncias_EstadoDenunciaID">
+            <End Role="tbl_estados_denuncias" EntitySet="tbl_estados_denuncias" />
+            <End Role="tbl_seguimiento_denuncias" EntitySet="tbl_seguimiento_denuncias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_evidencias_denuncias_tbl_evidencias_denuncias" Association="Self.FK_tbl_evidencias_denuncias_tbl_evidencias_denuncias">
+            <End Role="tbl_evidencias_denuncias" EntitySet="tbl_evidencias_denuncias" />
+            <End Role="tbl_evidencias_denuncias1" EntitySet="tbl_evidencias_denuncias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_perfiles_permisos_ModuloID" Association="Self.FK_tbl_perfiles_permisos_ModuloID">
+            <End Role="tbl_modulos" EntitySet="tbl_modulos" />
+            <End Role="tbl_perfiles_permisos_modulos" EntitySet="tbl_perfiles_permisos_modulos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_perfiles_permisos_modulos_PerfilUsuarioID" Association="Self.FK_tbl_perfiles_permisos_modulos_PerfilUsuarioID">
+            <End Role="tbl_perfiles_usuarios" EntitySet="tbl_perfiles_usuarios" />
+            <End Role="tbl_perfiles_permisos_modulos" EntitySet="tbl_perfiles_permisos_modulos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_perfiles_usuarios_tbl_perfiles_usuarios" Association="Self.FK_tbl_perfiles_usuarios_tbl_perfiles_usuarios">
+            <End Role="tbl_perfiles_usuarios" EntitySet="tbl_perfiles_usuarios" />
+            <End Role="tbl_perfiles_usuarios1" EntitySet="tbl_perfiles_usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_usuarios_tbl_perfilUsuarioID" Association="Self.FK_tbl_usuarios_tbl_perfilUsuarioID">
+            <End Role="tbl_perfiles_usuarios" EntitySet="tbl_perfiles_usuarios" />
+            <End Role="tbl_usuarios" EntitySet="tbl_usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_seguimiento_denuncias_AsignadaUsuarioID" Association="Self.FK_tbl_seguimiento_denuncias_AsignadaUsuarioID">
+            <End Role="tbl_usuarios" EntitySet="tbl_usuarios" />
+            <End Role="tbl_seguimiento_denuncias" EntitySet="tbl_seguimiento_denuncias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_seguimiento_denuncias_StatusID" Association="Self.FK_tbl_seguimiento_denuncias_StatusID">
+            <End Role="tbl_status_denuncias" EntitySet="tbl_status_denuncias" />
+            <End Role="tbl_seguimiento_denuncias" EntitySet="tbl_seguimiento_denuncias" />
+          </AssociationSet>
+          <EntitySet Name="View_denuncias_falladas" EntityType="DEMAPSModel.View_denuncias_falladas" />
+          <EntitySet Name="View_denuncias_finalizadas" EntityType="DEMAPSModel.View_denuncias_finalizadas" />
+          <EntitySet Name="View_denuncias_investigacion" EntityType="DEMAPSModel.View_denuncias_investigacion" />
+          <EntitySet Name="View_denuncias_recibidas" EntityType="DEMAPSModel.View_denuncias_recibidas" />
+        </EntityContainer>
+        <EntityType Name="View_denuncias_falladas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="CedulaDenunciante" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Producto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Establecimiento" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
+          <Property Name="Tipo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ImagenDenuncia" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="VideoDenuncia" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="View_denuncias_finalizadas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="CedulaDenunciante" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Producto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Establecimiento" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
+          <Property Name="Tipo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ImagenDenuncia" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="VideoDenuncia" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="View_denuncias_investigacion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="CedulaDenunciante" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Producto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Establecimiento" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
+          <Property Name="Tipo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ImagenDenuncia" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="VideoDenuncia" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="View_denuncias_recibidas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="CedulaDenunciante" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Producto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Establecimiento" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
+          <Property Name="Tipo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ImagenDenuncia" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="VideoDenuncia" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DEMAPSModelStoreContainer" CdmEntityContainer="DEMAPSEntities">
+          <EntitySetMapping Name="tbl_comentarios_denuncias">
+            <EntityTypeMapping TypeName="DEMAPSModel.tbl_comentarios_denuncias">
+              <MappingFragment StoreEntitySet="tbl_comentarios_denuncias">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_denuncias">
+            <EntityTypeMapping TypeName="DEMAPSModel.tbl_denuncias">
+              <MappingFragment StoreEntitySet="tbl_denuncias">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TipoDenunciaID" ColumnName="TipoDenunciaID" />
+                <ScalarProperty Name="CedulaDenunciante" ColumnName="CedulaDenunciante" />
+                <ScalarProperty Name="Producto" ColumnName="Producto" />
+                <ScalarProperty Name="Establecimiento" ColumnName="Establecimiento" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_estados_denuncias">
+            <EntityTypeMapping TypeName="DEMAPSModel.tbl_estados_denuncias">
+              <MappingFragment StoreEntitySet="tbl_estados_denuncias">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_evidencias_denuncias">
+            <EntityTypeMapping TypeName="DEMAPSModel.tbl_evidencias_denuncias">
+              <MappingFragment StoreEntitySet="tbl_evidencias_denuncias">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DenunciaID" ColumnName="DenunciaID" />
+                <ScalarProperty Name="ImagenDenuncia" ColumnName="ImagenDenuncia" />
+                <ScalarProperty Name="VideoDenuncia" ColumnName="VideoDenuncia" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_modulos">
+            <EntityTypeMapping TypeName="DEMAPSModel.tbl_modulos">
+              <MappingFragment StoreEntitySet="tbl_modulos">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Modulo" ColumnName="Modulo" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_perfiles_permisos_modulos">
+            <EntityTypeMapping TypeName="DEMAPSModel.tbl_perfiles_permisos_modulos">
+              <MappingFragment StoreEntitySet="tbl_perfiles_permisos_modulos">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PerfilUsuarioID" ColumnName="PerfilUsuarioID" />
+                <ScalarProperty Name="ModuloID" ColumnName="ModuloID" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_perfiles_usuarios">
+            <EntityTypeMapping TypeName="DEMAPSModel.tbl_perfiles_usuarios">
+              <MappingFragment StoreEntitySet="tbl_perfiles_usuarios">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Perfil" ColumnName="Perfil" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_seguimiento_denuncias">
+            <EntityTypeMapping TypeName="DEMAPSModel.tbl_seguimiento_denuncias">
+              <MappingFragment StoreEntitySet="tbl_seguimiento_denuncias">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DenunciaID" ColumnName="DenunciaID" />
+                <ScalarProperty Name="ComentarioID" ColumnName="ComentarioID" />
+                <ScalarProperty Name="AsignadaUsuarioID" ColumnName="AsignadaUsuarioID" />
+                <ScalarProperty Name="EstadoDenunciaID" ColumnName="EstadoDenunciaID" />
+                <ScalarProperty Name="StatusDenunciaID" ColumnName="StatusDenunciaID" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+                <ScalarProperty Name="UltModifFecha" ColumnName="UltModifFecha" />
+                <ScalarProperty Name="UltModifUsuario" ColumnName="UltModifUsuario" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_status_denuncias">
+            <EntityTypeMapping TypeName="DEMAPSModel.tbl_status_denuncias">
+              <MappingFragment StoreEntitySet="tbl_status_denuncias">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_tipos_denuncias">
+            <EntityTypeMapping TypeName="DEMAPSModel.tbl_tipos_denuncias">
+              <MappingFragment StoreEntitySet="tbl_tipos_denuncias">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_usuarios">
+            <EntityTypeMapping TypeName="DEMAPSModel.tbl_usuarios">
+              <MappingFragment StoreEntitySet="tbl_usuarios">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PerfilUsuarioID" ColumnName="PerfilUsuarioID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_denuncias_falladas">
+            <EntityTypeMapping TypeName="DEMAPSModel.View_denuncias_falladas">
+              <MappingFragment StoreEntitySet="View_denuncias_falladas">
+                <ScalarProperty Name="VideoDenuncia" ColumnName="VideoDenuncia" />
+                <ScalarProperty Name="ImagenDenuncia" ColumnName="ImagenDenuncia" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="Establecimiento" ColumnName="Establecimiento" />
+                <ScalarProperty Name="Producto" ColumnName="Producto" />
+                <ScalarProperty Name="CedulaDenunciante" ColumnName="CedulaDenunciante" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_denuncias_finalizadas">
+            <EntityTypeMapping TypeName="DEMAPSModel.View_denuncias_finalizadas">
+              <MappingFragment StoreEntitySet="View_denuncias_finalizadas">
+                <ScalarProperty Name="VideoDenuncia" ColumnName="VideoDenuncia" />
+                <ScalarProperty Name="ImagenDenuncia" ColumnName="ImagenDenuncia" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="Establecimiento" ColumnName="Establecimiento" />
+                <ScalarProperty Name="Producto" ColumnName="Producto" />
+                <ScalarProperty Name="CedulaDenunciante" ColumnName="CedulaDenunciante" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_denuncias_investigacion">
+            <EntityTypeMapping TypeName="DEMAPSModel.View_denuncias_investigacion">
+              <MappingFragment StoreEntitySet="View_denuncias_investigacion">
+                <ScalarProperty Name="VideoDenuncia" ColumnName="VideoDenuncia" />
+                <ScalarProperty Name="ImagenDenuncia" ColumnName="ImagenDenuncia" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="Establecimiento" ColumnName="Establecimiento" />
+                <ScalarProperty Name="Producto" ColumnName="Producto" />
+                <ScalarProperty Name="CedulaDenunciante" ColumnName="CedulaDenunciante" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_denuncias_recibidas">
+            <EntityTypeMapping TypeName="DEMAPSModel.View_denuncias_recibidas">
+              <MappingFragment StoreEntitySet="View_denuncias_recibidas">
+                <ScalarProperty Name="VideoDenuncia" ColumnName="VideoDenuncia" />
+                <ScalarProperty Name="ImagenDenuncia" ColumnName="ImagenDenuncia" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="Establecimiento" ColumnName="Establecimiento" />
+                <ScalarProperty Name="Producto" ColumnName="Producto" />
+                <ScalarProperty Name="CedulaDenunciante" ColumnName="CedulaDenunciante" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
