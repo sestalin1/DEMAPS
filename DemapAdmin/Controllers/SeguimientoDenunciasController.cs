@@ -110,7 +110,7 @@ namespace DemapAdmin.Controllers
     
 
 
-        public async Task<ActionResult> Panel(int ? id)
+        public ActionResult Panel(int ? id)
         {
             if (id != null)
             {
@@ -131,6 +131,8 @@ namespace DemapAdmin.Controllers
             
           
         }
+
+
 
 
 

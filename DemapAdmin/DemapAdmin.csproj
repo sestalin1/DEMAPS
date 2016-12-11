@@ -619,11 +619,6 @@
     <Content Include="Views\usuarios\Details.cshtml" />
     <Content Include="Views\usuarios\Edit.cshtml" />
     <Content Include="Views\usuarios\Index.cshtml" />
-    <Content Include="Views\Denuncias2\Create.cshtml" />
-    <Content Include="Views\Denuncias2\Delete.cshtml" />
-    <Content Include="Views\Denuncias2\Details.cshtml" />
-    <Content Include="Views\Denuncias2\Edit.cshtml" />
-    <Content Include="Views\Denuncias3\Index.cshtml" />
     <Content Include="Views\Denuncias\DenunciasFalladas.cshtml" />
     <Content Include="Views\Denuncias\DenunciasRecibidas.cshtml" />
     <Content Include="Views\Denuncias\DenunciasFinalizadas.cshtml" />
@@ -634,10 +629,6 @@
     <Content Include="Views\tbl_usuarios\Edit.cshtml" />
     <Content Include="Views\tbl_usuarios\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
-    <Content Include="Views\Denuncias3\Create.cshtml" />
-    <Content Include="Views\Denuncias3\Delete.cshtml" />
-    <Content Include="Views\Denuncias3\Details.cshtml" />
-    <Content Include="Views\Denuncias3\Edit.cshtml" />
     <Content Include="Views\SeguimientoDenuncias2\Create.cshtml" />
     <Content Include="Views\SeguimientoDenuncias2\Delete.cshtml" />
     <Content Include="Views\SeguimientoDenuncias2\Details.cshtml" />
