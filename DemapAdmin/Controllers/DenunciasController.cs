@@ -11,18 +11,18 @@ using DemapAdmin.Models;
 
 namespace DemapAdmin.Controllers
 {
-    public class denunciasController : Controller
+    public class DenunciasController : Controller
     {
         private DEMAPSEntities db = new DEMAPSEntities();
 
-        // GET: denuncias
+        // GET: Denuncias
         public async Task<ActionResult> Index()
         {
-            var tbl_denuncias = db.tbl_denuncias.Include(t => t.tbl_tipos_denuncias);
+            var tbl_denuncias = db.tbl_denuncias.Include(t => t.tbl_estados_denuncias).Include(t => t.tbl_tipos_productos);
             return View(await tbl_denuncias.ToListAsync());
         }
 
-        // GET: denuncias/Details/5
+        // GET: Denuncias/Details/5
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
@@ -37,106 +37,75 @@ namespace DemapAdmin.Controllers
             return View(tbl_denuncias);
         }
 
-
-        // GET: denuncias/Edit/5
-        public async Task<ActionResult> Edit(int? id)
+        // GET: Denuncias/Create
+        public ActionResult Create()
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            tbl_denuncias tbl_denuncias = await db.tbl_denuncias.FindAsync(id);
-            if (tbl_denuncias == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.TipoDenunciaID = new SelectList(db.tbl_tipos_denuncias, "Id", "Tipo", tbl_denuncias.TipoDenunciaID);
-            return View(tbl_denuncias);
+            ViewBag.EstadoDenunciaID = new SelectList(db.tbl_estados_denuncias, "Id", "Estado");
+            ViewBag.TipoProductoID = new SelectList(db.tbl_tipos_productos, "Id", "Tipo");
+            return View();
         }
 
+        // POST: Denuncias/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,TipoDenunciaID,CedulaDenunciante,Producto,Establecimiento,FechaCreacion,Activo")] tbl_denuncias tbl_denuncias)
+        public async Task<ActionResult> Create([Bind(Include = "Id,TipoProductoID,EstadoDenunciaID,CedulaDenunciante,Producto,Establecimiento,FechaCreacion,Activo")] tbl_denuncias tbl_denuncias)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(tbl_denuncias).State = EntityState.Modified;
+                db.tbl_denuncias.Add(tbl_denuncias);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.TipoDenunciaID = new SelectList(db.tbl_tipos_denuncias, "Id", "Tipo", tbl_denuncias.TipoDenunciaID);
+
+            ViewBag.EstadoDenunciaID = new SelectList(db.tbl_estados_denuncias, "Id", "Estado", tbl_denuncias.EstadoDenunciaID);
+            ViewBag.TipoProductoID = new SelectList(db.tbl_tipos_productos, "Id", "Tipo", tbl_denuncias.TipoProductoID);
             return View(tbl_denuncias);
         }
 
+    
         public async Task<ActionResult> DenunciasRecibidas()
         {
-            /*  if (ValidateUserPermissionToModule("M_REMISION_EXP_PENDIENTES"))
-              {*/
-            //  var UserProfileOnline = (Dictionary<string, string>)Session["UserProfile"];
-            // var SucursalID = Convert.ToInt32(UserProfileOnline["SucursalID"]);
 
             var DenunciasRecibidas = db.View_denuncias_recibidas.ToListAsync();
             return View(await DenunciasRecibidas);
 
-            /*  }
-              else
-              {
-                  return RedirectToAction("Index", "Login");
-              }*/
         }
 
         public async Task<ActionResult> DenunciasFalladas()
         {
-            /*  if (ValidateUserPermissionToModule("M_REMISION_EXP_PENDIENTES"))
-              {*/
-            //  var UserProfileOnline = (Dictionary<string, string>)Session["UserProfile"];
-            // var SucursalID = Convert.ToInt32(UserProfileOnline["SucursalID"]);
 
             var DenunciasFalladas = db.View_denuncias_falladas.ToListAsync();
             return View(await DenunciasFalladas);
 
-            /*  }
-              else
-              {
-                  return RedirectToAction("Index", "Login");
-              }*/
         }
 
 
         public async Task<ActionResult> DenunciasFinalizadas()
         {
-            /*  if (ValidateUserPermissionToModule("M_REMISION_EXP_PENDIENTES"))
-              {*/
-            //  var UserProfileOnline = (Dictionary<string, string>)Session["UserProfile"];
-            // var SucursalID = Convert.ToInt32(UserProfileOnline["SucursalID"]);
 
             var DenunciasFinalizadas = db.View_denuncias_finalizadas.ToListAsync();
             return View(await DenunciasFinalizadas);
 
-            /*  }
-              else
-              {
-                  return RedirectToAction("Index", "Login");
-              }*/
         }
 
         public async Task<ActionResult> DenunciasInvestigacion()
         {
-            /*  if (ValidateUserPermissionToModule("M_REMISION_EXP_PENDIENTES"))
-              {*/
-            //  var UserProfileOnline = (Dictionary<string, string>)Session["UserProfile"];
-            // var SucursalID = Convert.ToInt32(UserProfileOnline["SucursalID"]);
 
             var DenunciasInvestigacion = db.View_denuncias_investigacion.ToListAsync();
             return View(await DenunciasInvestigacion);
 
-            /*  }
-              else
-              {
-                  return RedirectToAction("Index", "Login");
-              }*/
         }
 
+        public ActionResult GetEvidencias(int ? DenunciaID)
+        {
+
+            var ListadoEvidencias = db.tbl_evidencias_denuncias.Select(e=>e.ImagenDenuncia).ToList();
+
+            return Json(ListadoEvidencias, JsonRequestBehavior.AllowGet);
+
+        }
 
         protected override void Dispose(bool disposing)
         {

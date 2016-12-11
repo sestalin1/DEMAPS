@@ -17,7 +17,7 @@ namespace DemapAdmin.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tbl_estados_denuncias()
         {
-            this.tbl_seguimiento_denuncias = new HashSet<tbl_seguimiento_denuncias>();
+            this.tbl_denuncias = new HashSet<tbl_denuncias>();
         }
     
         public int Id { get; set; }
@@ -28,6 +28,6 @@ namespace DemapAdmin.Models
         public Nullable<byte> Activo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbl_seguimiento_denuncias> tbl_seguimiento_denuncias { get; set; }
+        public virtual ICollection<tbl_denuncias> tbl_denuncias { get; set; }
     }
 }

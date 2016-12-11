@@ -14,12 +14,6 @@ namespace DemapAdmin.Models
     
     public partial class tbl_evidencias_denuncias
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tbl_evidencias_denuncias()
-        {
-            this.tbl_evidencias_denuncias1 = new HashSet<tbl_evidencias_denuncias>();
-        }
-    
         public int Id { get; set; }
         public Nullable<int> DenunciaID { get; set; }
         public string ImagenDenuncia { get; set; }
@@ -27,8 +21,6 @@ namespace DemapAdmin.Models
         public Nullable<System.DateTime> FechaCreacion { get; set; }
         public Nullable<byte> Activo { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbl_evidencias_denuncias> tbl_evidencias_denuncias1 { get; set; }
-        public virtual tbl_evidencias_denuncias tbl_evidencias_denuncias2 { get; set; }
+        public virtual tbl_denuncias tbl_denuncias { get; set; }
     }
 }

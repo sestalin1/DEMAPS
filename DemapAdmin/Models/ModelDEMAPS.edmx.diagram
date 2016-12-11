@@ -4,33 +4,36 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="6f61d9bf1c214099abca562fbecc37ad" Name="Diagram1" ZoomLevel="74">
-        <EntityTypeShape EntityType="DEMAPSModel.tbl_comentarios_denuncias" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
-        <EntityTypeShape EntityType="DEMAPSModel.tbl_denuncias" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DEMAPSModel.tbl_estados_denuncias" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DEMAPSModel.tbl_evidencias_denuncias" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DEMAPSModel.tbl_modulos" Width="1.5" PointX="5.75" PointY="7.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DEMAPSModel.tbl_perfiles_permisos_modulos" Width="1.5" PointX="8" PointY="11.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DEMAPSModel.tbl_perfiles_usuarios" Width="1.5" PointX="0.75" PointY="15.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DEMAPSModel.tbl_seguimiento_denuncias" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="DEMAPSModel.tbl_status_denuncias" Width="1.5" PointX="3" PointY="12" IsExpanded="true" />
-        <EntityTypeShape EntityType="DEMAPSModel.tbl_tipos_denuncias" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DEMAPSModel.tbl_usuarios" Width="1.5" PointX="3" PointY="15.125" IsExpanded="true" />
+      <Diagram DiagramId="159493e8c45a4668aae260be63e9a06a" Name="Diagram1" ZoomLevel="54">
+        <EntityTypeShape EntityType="DEMAPSModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DEMAPSModel.tbl_comentarios_denuncias" Width="1.5" PointX="6" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DEMAPSModel.tbl_denuncias" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DEMAPSModel.tbl_estados_denuncias" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DEMAPSModel.tbl_evidencias_denuncias" Width="1.5" PointX="5.25" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DEMAPSModel.tbl_modulos" Width="1.5" PointX="8.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DEMAPSModel.tbl_perfiles_permisos_modulos" Width="1.5" PointX="11" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DEMAPSModel.tbl_perfiles_usuarios" Width="1.5" PointX="3.75" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="DEMAPSModel.tbl_seguimiento_denuncias" Width="1.5" PointX="8.25" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DEMAPSModel.tbl_status_denuncias" Width="1.5" PointX="6" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DEMAPSModel.tbl_tipos_productos" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DEMAPSModel.tbl_usuarios" Width="1.5" PointX="6" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DEMAPSModel.View_denuncias_falladas" Width="2.5" PointX="2.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DEMAPSModel.View_denuncias_finalizadas" Width="3.125" PointX="7.25" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DEMAPSModel.View_denuncias_investigacion" Width="2.5" PointX="10.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DEMAPSModel.View_denuncias_recibidas" Width="2.5" PointX="11.125" PointY="1.875" IsExpanded="true" />
         <AssociationConnector Association="DEMAPSModel.FK_tbl_seguimiento_denuncias_tbl_ComentarioID" ManuallyRouted="false" />
-        <AssociationConnector Association="DEMAPSModel.FK_tbl_denuncias_tbl_tipos_denuncias" ManuallyRouted="false" />
-        <AssociationConnector Association="DEMAPSModel.FK_tbl_seguimiento_denuncias_DenunciaID" ManuallyRouted="false" />
-        <AssociationConnector Association="DEMAPSModel.FK_tbl_seguimiento_denuncias_EstadoDenunciaID" ManuallyRouted="false" />
+        <AssociationConnector Association="DEMAPSModel.FK_tbl_denuncias_tbl_estados_denuncias" ManuallyRouted="false" />
+        <AssociationConnector Association="DEMAPSModel.FK_tbl_denuncias_TipoProductoID" ManuallyRouted="false" />
         <AssociationConnector Association="DEMAPSModel.FK_tbl_evidencias_denuncias_tbl_evidencias_denuncias" ManuallyRouted="false" />
+        <AssociationConnector Association="DEMAPSModel.FK_tbl_seguimiento_denuncias_DenunciaID" ManuallyRouted="false" />
         <AssociationConnector Association="DEMAPSModel.FK_tbl_perfiles_permisos_ModuloID" ManuallyRouted="false" />
         <AssociationConnector Association="DEMAPSModel.FK_tbl_perfiles_permisos_modulos_PerfilUsuarioID" ManuallyRouted="false" />
         <AssociationConnector Association="DEMAPSModel.FK_tbl_perfiles_usuarios_tbl_perfiles_usuarios" ManuallyRouted="false" />
         <AssociationConnector Association="DEMAPSModel.FK_tbl_usuarios_tbl_perfilUsuarioID" ManuallyRouted="false" />
         <AssociationConnector Association="DEMAPSModel.FK_tbl_seguimiento_denuncias_AsignadaUsuarioID" ManuallyRouted="false" />
         <AssociationConnector Association="DEMAPSModel.FK_tbl_seguimiento_denuncias_StatusID" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="DEMAPSModel.View_denuncias_falladas" Width="1.5" PointX="8.375" PointY="4.75" />
-        <EntityTypeShape EntityType="DEMAPSModel.View_denuncias_finalizadas" Width="1.5" PointX="10.375" PointY="0.75" />
-        <EntityTypeShape EntityType="DEMAPSModel.View_denuncias_investigacion" Width="1.5" PointX="10.375" PointY="4.75" />
-        <EntityTypeShape EntityType="DEMAPSModel.View_denuncias_recibidas" Width="1.5" PointX="10.375" PointY="8.75" />
+        <EntityTypeShape EntityType="DEMAPSModel.View_denuncias" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="DEMAPSModel.View_seguimiento_denuncias" Width="1.5" PointX="13.375" PointY="9.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -12,22 +12,16 @@ namespace DemapAdmin.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tbl_tipos_denuncias
+    public partial class View_denuncias
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tbl_tipos_denuncias()
-        {
-            this.tbl_denuncias = new HashSet<tbl_denuncias>();
-        }
-    
         public int Id { get; set; }
+        public string CedulaDenunciante { get; set; }
+        public string Producto { get; set; }
+        public string Establecimiento { get; set; }
+        public string Estado { get; set; }
+        public string Status { get; set; }
         public string Tipo { get; set; }
-        public string Descripcion { get; set; }
         public Nullable<System.DateTime> FechaCreacion { get; set; }
-        public string CreadoPor { get; set; }
         public Nullable<byte> Activo { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbl_denuncias> tbl_denuncias { get; set; }
     }
 }

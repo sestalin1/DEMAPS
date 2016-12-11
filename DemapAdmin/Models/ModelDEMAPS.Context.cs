@@ -25,6 +25,7 @@ namespace DemapAdmin.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<tbl_comentarios_denuncias> tbl_comentarios_denuncias { get; set; }
         public virtual DbSet<tbl_denuncias> tbl_denuncias { get; set; }
         public virtual DbSet<tbl_estados_denuncias> tbl_estados_denuncias { get; set; }
@@ -34,11 +35,13 @@ namespace DemapAdmin.Models
         public virtual DbSet<tbl_perfiles_usuarios> tbl_perfiles_usuarios { get; set; }
         public virtual DbSet<tbl_seguimiento_denuncias> tbl_seguimiento_denuncias { get; set; }
         public virtual DbSet<tbl_status_denuncias> tbl_status_denuncias { get; set; }
-        public virtual DbSet<tbl_tipos_denuncias> tbl_tipos_denuncias { get; set; }
+        public virtual DbSet<tbl_tipos_productos> tbl_tipos_productos { get; set; }
         public virtual DbSet<tbl_usuarios> tbl_usuarios { get; set; }
         public virtual DbSet<View_denuncias_falladas> View_denuncias_falladas { get; set; }
         public virtual DbSet<View_denuncias_finalizadas> View_denuncias_finalizadas { get; set; }
         public virtual DbSet<View_denuncias_investigacion> View_denuncias_investigacion { get; set; }
         public virtual DbSet<View_denuncias_recibidas> View_denuncias_recibidas { get; set; }
+        public virtual DbSet<View_denuncias> View_denuncias { get; set; }
+        public virtual DbSet<View_seguimiento_denuncias> View_seguimiento_denuncias { get; set; }
     }
 }

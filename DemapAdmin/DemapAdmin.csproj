@@ -164,8 +164,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ConsultaRegistroSanitarioController.cs" />
     <Compile Include="Controllers\DenunciasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\SeguimientoDenunciasController.cs" />
     <Compile Include="Controllers\usuariosController.cs" />
     <Compile Include="Global.asax.cs">
@@ -187,6 +189,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelDEMAPS.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>ModelDEMAPS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbl_comentarios_denuncias.cs">
       <DependentUpon>ModelDEMAPS.tt</DependentUpon>
@@ -215,10 +220,13 @@
     <Compile Include="Models\tbl_status_denuncias.cs">
       <DependentUpon>ModelDEMAPS.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\tbl_tipos_denuncias.cs">
+    <Compile Include="Models\tbl_tipos_productos.cs">
       <DependentUpon>ModelDEMAPS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tbl_usuarios.cs">
+      <DependentUpon>ModelDEMAPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\View_denuncias.cs">
       <DependentUpon>ModelDEMAPS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\View_denuncias_falladas.cs">
@@ -231,6 +239,9 @@
       <DependentUpon>ModelDEMAPS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\View_denuncias_recibidas.cs">
+      <DependentUpon>ModelDEMAPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\View_seguimiento_denuncias.cs">
       <DependentUpon>ModelDEMAPS.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -280,6 +291,10 @@
     <Content Include="Content\css\pages\transitions.css" />
     <Content Include="Content\css\pages\widgets.css" />
     <Content Include="Content\css\pages\wizards.css" />
+    <Content Include="Content\img\fondo1.jpg" />
+    <Content Include="Content\img\fondo2.jpg" />
+    <Content Include="Content\img\user3.png" />
+    <Content Include="Content\img\user4.png" />
     <Content Include="Content\vendors\animate\css\animate.min.css" />
     <Content Include="Content\vendors\autosize\js\jquery.autosize.min.js" />
     <Content Include="Content\vendors\bootstrap-colorpicker\css\bootstrap-colorpicker.min.css" />
@@ -566,7 +581,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -590,26 +607,47 @@
     <Content Include="Views\usuarios\Details.cshtml" />
     <Content Include="Views\usuarios\Edit.cshtml" />
     <Content Include="Views\usuarios\Index.cshtml" />
+    <Content Include="Views\Denuncias2\Create.cshtml" />
+    <Content Include="Views\Denuncias2\Delete.cshtml" />
+    <Content Include="Views\Denuncias2\Details.cshtml" />
+    <Content Include="Views\Denuncias2\Edit.cshtml" />
+    <Content Include="Views\Denuncias3\Index.cshtml" />
+    <Content Include="Views\Denuncias\DenunciasFalladas.cshtml" />
+    <Content Include="Views\Denuncias\DenunciasRecibidas.cshtml" />
+    <Content Include="Views\Denuncias\DenunciasFinalizadas.cshtml" />
+    <Content Include="Views\Denuncias\DenunciasInvestigacion.cshtml" />
+    <Content Include="Views\tbl_usuarios\Create.cshtml" />
+    <Content Include="Views\tbl_usuarios\Delete.cshtml" />
+    <Content Include="Views\tbl_usuarios\Details.cshtml" />
+    <Content Include="Views\tbl_usuarios\Edit.cshtml" />
+    <Content Include="Views\tbl_usuarios\Index.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Denuncias3\Create.cshtml" />
+    <Content Include="Views\Denuncias3\Delete.cshtml" />
+    <Content Include="Views\Denuncias3\Details.cshtml" />
+    <Content Include="Views\Denuncias3\Edit.cshtml" />
+    <Content Include="Views\SeguimientoDenuncias2\Create.cshtml" />
+    <Content Include="Views\SeguimientoDenuncias2\Delete.cshtml" />
+    <Content Include="Views\SeguimientoDenuncias2\Details.cshtml" />
+    <Content Include="Views\SeguimientoDenuncias2\Edit.cshtml" />
+    <Content Include="Views\SeguimientoDenuncias2\Index.cshtml" />
     <Content Include="Views\Denuncias\Create.cshtml" />
     <Content Include="Views\Denuncias\Delete.cshtml" />
     <Content Include="Views\Denuncias\Details.cshtml" />
     <Content Include="Views\Denuncias\Edit.cshtml" />
     <Content Include="Views\Denuncias\Index.cshtml" />
-    <Content Include="Views\Denuncias\DenunciasFalladas.cshtml" />
-    <Content Include="Views\Denuncias\DenunciasRecibidas.cshtml" />
-    <Content Include="Views\Denuncias\DenunciasFinalizadas.cshtml" />
-    <Content Include="Views\Denuncias\DenunciasInvestigacion.cshtml" />
     <Content Include="Views\SeguimientoDenuncias\Create.cshtml" />
     <Content Include="Views\SeguimientoDenuncias\Delete.cshtml" />
     <Content Include="Views\SeguimientoDenuncias\Details.cshtml" />
     <Content Include="Views\SeguimientoDenuncias\Edit.cshtml" />
     <Content Include="Views\SeguimientoDenuncias\Index.cshtml" />
+    <Content Include="Views\ConsultaRegistroSanitario\Index.cshtml" />
+    <Content Include="Views\SeguimientoDenuncias\Panel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\DataTables\" />
     <Folder Include="Content\fonts\" />
-    <Folder Include="Content\img\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

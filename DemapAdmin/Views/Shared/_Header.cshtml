@@ -3,7 +3,7 @@
     <!-- .navbar -->
     <nav class="navbar navbar-static-top">
         <div class="container-fluid">
-            <a class="navbar-brand text-xs-center" href="/">
+            <a class="navbar-brand text-xs-center" href="/Home/">
                 <h4 class="text-white"><img src="~/Content/img/logow.png" class="admin_img" alt="logo"> DEMAPS</h4>
             </a>
             <div class="menu">
@@ -28,44 +28,30 @@
                         <a class="btn btn-default btn-sm" data-toggle="dropdown">
                             <i class="fa fa-bell text-white"></i>
                             <!--<span class="bg-danger notification_tags">4</span>-->
-                            <span class="tag tag-danger">9</span>
+                            <span class="tag tag-danger">@ViewBag.TotalPendientes</span>
                         </a>
                         <div class="dropdown-menu drop_box_align" role="menu">
-                            <div class="popover-title">Tienes 2 notificaciones</div>
-                            <div id="notifications">
-                                <div class="data">
-                                    <div class="col-xs-2">
-                                        <img src="~/Content/img/mailbox_imgs/1.jpg" class="message-img avatar" alt="avatar1">
+                            <div class="popover-title">Tiene(s) @ViewBag.TotalPendientes  notificacione(s)</div>
+                            @if (@ViewBag.TotalPendientes > 0)
+                            {
+                                <div id="notifications">
+                                    <div class="data">
+                                        <div class="col-xs-2">
+                                            <img src="~/Content/img/user3.png" class="message-img avatar" alt="avatar1">
+                                        </div>
+                                        <div class="col-xs-10 message-data">
+                                            <i class="fa fa-clock-o"></i>
+                                            <strong>Denuncias Pendientes</strong>
+                                             Tiene(s) @ViewBag.TotalPendientes denuncia(s) recibida(s)
+                                            <br>
+                                        </div>
                                     </div>
-                                    <div class="col-xs-10 message-data">
-                                        <i class="fa fa-clock-o"></i>
-                                        <strong>Remo</strong>
-                                        sent you an image
-                                        <br>
-                                        <small class="primary_txt">just now.</small>
-                                        <br>
-                                    </div>
+
                                 </div>
 
-                                <div class="data">
-                                    <div class="col-xs-2">
-                                        <img src="~/Content/img/mailbox_imgs/3.jpg" class="message-img avatar" alt="avatar1">
-                                    </div>
-                                    <div class="col-xs-10 message-data">
-                                        <i class="fa fa-clock-o"></i>
-                                        <strong>John</strong>
-                                        meeting at Ritz
-                                        <br>
-                                        <small class="primary_txt">2hrs Back.</small>
-                                        <br>
-                                    </div>
-                                </div>
+                            }
+                    
 
-                            </div>
-
-                            <div class="popover-footer">
-                                <a href="#">Ver todas</a>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -73,12 +59,12 @@
                 <div class="btn-group">
                     <div class="user-settings no-bg">
                         <button type="button" class="btn btn-default no-bg micheal_btn" data-toggle="dropdown">
-                            <img src="~/Content/img//admin.jpg" class="admin_img2 rounded-circle avatar-img" alt="avatar">
-                            <strong>Micheal</strong>
+                            <img src="~/Content/img/user3.png" class="admin_img2 rounded-circle avatar-img" alt="avatar">
+                            <strong>Supervisor</strong>
                             <span class="fa fa-sort-down white_bg"></span>
                         </button>
                         <div class="dropdown-menu admire_admin">
-                            <a class="dropdown-item title" href="#">
+                            <a class="dropdown-item title" href="/">
                                 Salir
                             </a>
 

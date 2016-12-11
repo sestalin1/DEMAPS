@@ -18,10 +18,10 @@ namespace DemapAdmin.Models
         public string CedulaDenunciante { get; set; }
         public string Producto { get; set; }
         public string Establecimiento { get; set; }
-        public Nullable<System.DateTime> FechaCreacion { get; set; }
-        public string Tipo { get; set; }
         public string Estado { get; set; }
         public string ImagenDenuncia { get; set; }
         public string VideoDenuncia { get; set; }
+        public Nullable<System.DateTime> FechaCreacion { get; set; }
+        public string TipoProducto { get; set; }
     }
 }

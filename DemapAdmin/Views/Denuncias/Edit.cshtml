@@ -18,10 +18,18 @@
         @Html.HiddenFor(model => model.Id)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.TipoDenunciaID, "TipoDenunciaID", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.TipoProductoID, "TipoProductoID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("TipoDenunciaID", String.Empty)
-                @Html.ValidationMessageFor(model => model.TipoDenunciaID)
+                @Html.DropDownList("TipoProductoID", String.Empty)
+                @Html.ValidationMessageFor(model => model.TipoProductoID)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EstadoDenunciaID, "EstadoDenunciaID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("EstadoDenunciaID", String.Empty)
+                @Html.ValidationMessageFor(model => model.EstadoDenunciaID)
             </div>
         </div>
 
