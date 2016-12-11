@@ -108,3 +108,9 @@ C:\Users\'SeStalin\Source\Repos\DEMAPS\DemapAdmin\bin\Microsoft.Owin.Security.Mi
 C:\Users\'SeStalin\Source\Repos\DEMAPS\DemapAdmin\obj\Debug\DemapAdmin.csprojResolveAssemblyReference.cache
 C:\Users\'SeStalin\Source\Repos\DEMAPS\DemapAdmin\obj\Debug\DemapAdmin.dll
 C:\Users\'SeStalin\Source\Repos\DEMAPS\DemapAdmin\obj\Debug\DemapAdmin.pdb
+C:\Users\'SeStalin\Source\Repos\DEMAPS\DemapAdmin\bin\System.Net.Http.Formatting.dll
+C:\Users\'SeStalin\Source\Repos\DEMAPS\DemapAdmin\bin\System.Web.Http.dll
+C:\Users\'SeStalin\Source\Repos\DEMAPS\DemapAdmin\bin\System.Web.Http.WebHost.dll
+C:\Users\'SeStalin\Source\Repos\DEMAPS\DemapAdmin\bin\System.Net.Http.Formatting.xml
+C:\Users\'SeStalin\Source\Repos\DEMAPS\DemapAdmin\bin\System.Web.Http.xml
+C:\Users\'SeStalin\Source\Repos\DEMAPS\DemapAdmin\bin\System.Web.Http.WebHost.xml
