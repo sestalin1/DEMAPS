@@ -26,7 +26,6 @@
                             <tr>
                                 <th> Cédula (Denunciante)</th>
                                 <th> @Html.DisplayNameFor(model => model.Producto) </th>
-                                <th>Registro Sanitario</th>
                                 <th> @Html.DisplayNameFor(model => model.Establecimiento) </th>
                                 <th> Fecha Registro</th>
                                 <th> Tipo Producto</th>
@@ -37,7 +36,7 @@
 
                             @foreach (var item in Model)
                             {
-
+                   
                                 <tr>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.CedulaDenunciante)
@@ -45,19 +44,15 @@
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Producto)
                                     </td>
-
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.RegistroSanitario)
-                                    </th>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Establecimiento)
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.FechaCreacion)
                                     </td>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.tbl_tipos_productos.Tipo)
-                                    </th>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TipoProductoID)
+                                    </td>
                                     <td>
                                         @Html.ActionLink("Ver", "Details", new { id = item.Id })
                                     </td>

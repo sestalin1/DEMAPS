@@ -1,0 +1,114 @@
+﻿@model DemapAdmin.Models.View_seguimiento_denuncias
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>View_seguimiento_denuncias</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CedulaDenunciante)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CedulaDenunciante)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Establecimiento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Establecimiento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Producto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Producto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImagenDenuncia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImagenDenuncia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Perfil)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Perfil)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaCreacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaCreacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Activo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Activo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UltModifFecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UltModifFecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UltModifUsuarioID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UltModifUsuarioID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

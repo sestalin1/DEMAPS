@@ -23,5 +23,6 @@ namespace DemapAdmin.Models
         public string Tipo { get; set; }
         public Nullable<System.DateTime> FechaCreacion { get; set; }
         public Nullable<byte> Activo { get; set; }
+        public string RegistroSanitario { get; set; }
     }
 }

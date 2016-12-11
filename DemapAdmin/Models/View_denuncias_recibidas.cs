@@ -23,5 +23,6 @@ namespace DemapAdmin.Models
         public string VideoDenuncia { get; set; }
         public Nullable<System.DateTime> FechaCreacion { get; set; }
         public string TipoProducto { get; set; }
+        public string RegistroSanitario { get; set; }
     }
 }

@@ -29,14 +29,17 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="TipoProductoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoProductoID" Type="int" />
           <Property Name="EstadoDenunciaID" Type="int" />
           <Property Name="CedulaDenunciante" Type="nvarchar" MaxLength="50" />
           <Property Name="Producto" Type="nvarchar" MaxLength="50" />
           <Property Name="Establecimiento" Type="text" />
           <Property Name="FechaCreacion" Type="date" />
           <Property Name="Activo" Type="tinyint" />
+          <Property Name="RegistroSanitario" Type="nvarchar" MaxLength="50" />
+          <Property Name="Latitud" Type="nvarchar" MaxLength="50" />
+          <Property Name="Longitud" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="tbl_estados_denuncias">
           <Key>
@@ -158,6 +161,7 @@ warning 6002: The table/view 'DEMAPS.dbo.View_denuncias' does not have a primary
           <Property Name="Tipo" Type="nvarchar" MaxLength="50" />
           <Property Name="FechaCreacion" Type="date" />
           <Property Name="Activo" Type="tinyint" />
+          <Property Name="RegistroSanitario" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'DEMAPS.dbo.View_denuncias_falladas' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -181,6 +185,7 @@ warning 6002: The table/view 'DEMAPS.dbo.View_denuncias_falladas' does not have 
           <Property Name="UltModifFecha" Type="date" />
           <Property Name="CreadoPorUsuarioID" Type="int" />
           <Property Name="TipoProducto" Type="nvarchar" MaxLength="50" />
+          <Property Name="RegistroSanitario" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'DEMAPS.dbo.View_denuncias_finalizadas' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -197,6 +202,7 @@ warning 6002: The table/view 'DEMAPS.dbo.View_denuncias_finalizadas' does not ha
           <Property Name="VideoDenuncia" Type="text" />
           <Property Name="FechaCreacion" Type="date" />
           <Property Name="TipoProducto" Type="nvarchar" MaxLength="50" />
+          <Property Name="RegistroSanitario" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'DEMAPS.dbo.View_denuncias_investigacion' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -213,6 +219,7 @@ warning 6002: The table/view 'DEMAPS.dbo.View_denuncias_investigacion' does not 
           <Property Name="VideoDenuncia" Type="text" />
           <Property Name="FechaCreacion" Type="date" />
           <Property Name="TipoProducto" Type="nvarchar" MaxLength="50" />
+          <Property Name="RegistroSanitario" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'DEMAPS.dbo.View_denuncias_recibidas' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -229,6 +236,7 @@ warning 6002: The table/view 'DEMAPS.dbo.View_denuncias_recibidas' does not have
           <Property Name="VideoDenuncia" Type="text" />
           <Property Name="FechaCreacion" Type="date" />
           <Property Name="TipoProducto" Type="nvarchar" MaxLength="50" />
+          <Property Name="RegistroSanitario" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'DEMAPS.dbo.View_seguimiento_denuncias' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -241,7 +249,6 @@ warning 6002: The table/view 'DEMAPS.dbo.View_seguimiento_denuncias' does not ha
           <Property Name="Establecimiento" Type="text" />
           <Property Name="Producto" Type="nvarchar" MaxLength="50" />
           <Property Name="Estado" Type="nvarchar" MaxLength="50" />
-          <Property Name="ImagenDenuncia" Type="text" />
           <Property Name="Status" Type="nvarchar" MaxLength="50" />
           <Property Name="Usuario" Type="nvarchar" MaxLength="50" />
           <Property Name="Perfil" Type="nvarchar" MaxLength="50" />
@@ -249,6 +256,8 @@ warning 6002: The table/view 'DEMAPS.dbo.View_seguimiento_denuncias' does not ha
           <Property Name="Activo" Type="tinyint" />
           <Property Name="UltModifFecha" Type="date" />
           <Property Name="UltModifUsuarioID" Type="int" />
+          <Property Name="RegistroSanitario" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tipo" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <Association Name="FK_tbl_denuncias_tbl_estados_denuncias">
           <End Role="tbl_estados_denuncias" Type="Self.tbl_estados_denuncias" Multiplicity="0..1" />
@@ -262,8 +271,8 @@ warning 6002: The table/view 'DEMAPS.dbo.View_seguimiento_denuncias' does not ha
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_tbl_denuncias_TipoProductoID">
-          <End Role="tbl_tipos_productos" Type="Self.tbl_tipos_productos" Multiplicity="1" />
+        <Association Name="FK_tbl_denuncias_tbl_tipos_productos">
+          <End Role="tbl_tipos_productos" Type="Self.tbl_tipos_productos" Multiplicity="0..1" />
           <End Role="tbl_denuncias" Type="Self.tbl_denuncias" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tbl_tipos_productos">
@@ -405,7 +414,8 @@ warning 6002: The table/view 'DEMAPS.dbo.View_seguimiento_denuncias' does not ha
     [View_denuncias].[Status] AS [Status], 
     [View_denuncias].[Tipo] AS [Tipo], 
     [View_denuncias].[FechaCreacion] AS [FechaCreacion], 
-    [View_denuncias].[Activo] AS [Activo]
+    [View_denuncias].[Activo] AS [Activo], 
+    [View_denuncias].[RegistroSanitario] AS [RegistroSanitario]
     FROM [dbo].[View_denuncias] AS [View_denuncias]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="View_denuncias_falladas" EntityType="Self.View_denuncias_falladas" store:Type="Views" store:Schema="dbo">
@@ -425,7 +435,8 @@ warning 6002: The table/view 'DEMAPS.dbo.View_seguimiento_denuncias' does not ha
     [View_denuncias_falladas].[UltModifUsuarioID] AS [UltModifUsuarioID], 
     [View_denuncias_falladas].[UltModifFecha] AS [UltModifFecha], 
     [View_denuncias_falladas].[CreadoPorUsuarioID] AS [CreadoPorUsuarioID], 
-    [View_denuncias_falladas].[TipoProducto] AS [TipoProducto]
+    [View_denuncias_falladas].[TipoProducto] AS [TipoProducto], 
+    [View_denuncias_falladas].[RegistroSanitario] AS [RegistroSanitario]
     FROM [dbo].[View_denuncias_falladas] AS [View_denuncias_falladas]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="View_denuncias_finalizadas" EntityType="Self.View_denuncias_finalizadas" store:Type="Views" store:Schema="dbo">
@@ -438,7 +449,8 @@ warning 6002: The table/view 'DEMAPS.dbo.View_seguimiento_denuncias' does not ha
     [View_denuncias_finalizadas].[ImagenDenuncia] AS [ImagenDenuncia], 
     [View_denuncias_finalizadas].[VideoDenuncia] AS [VideoDenuncia], 
     [View_denuncias_finalizadas].[FechaCreacion] AS [FechaCreacion], 
-    [View_denuncias_finalizadas].[TipoProducto] AS [TipoProducto]
+    [View_denuncias_finalizadas].[TipoProducto] AS [TipoProducto], 
+    [View_denuncias_finalizadas].[RegistroSanitario] AS [RegistroSanitario]
     FROM [dbo].[View_denuncias_finalizadas] AS [View_denuncias_finalizadas]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="View_denuncias_investigacion" EntityType="Self.View_denuncias_investigacion" store:Type="Views" store:Schema="dbo">
@@ -451,7 +463,8 @@ warning 6002: The table/view 'DEMAPS.dbo.View_seguimiento_denuncias' does not ha
     [View_denuncias_investigacion].[ImagenDenuncia] AS [ImagenDenuncia], 
     [View_denuncias_investigacion].[VideoDenuncia] AS [VideoDenuncia], 
     [View_denuncias_investigacion].[FechaCreacion] AS [FechaCreacion], 
-    [View_denuncias_investigacion].[TipoProducto] AS [TipoProducto]
+    [View_denuncias_investigacion].[TipoProducto] AS [TipoProducto], 
+    [View_denuncias_investigacion].[RegistroSanitario] AS [RegistroSanitario]
     FROM [dbo].[View_denuncias_investigacion] AS [View_denuncias_investigacion]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="View_denuncias_recibidas" EntityType="Self.View_denuncias_recibidas" store:Type="Views" store:Schema="dbo">
@@ -464,7 +477,8 @@ warning 6002: The table/view 'DEMAPS.dbo.View_seguimiento_denuncias' does not ha
     [View_denuncias_recibidas].[ImagenDenuncia] AS [ImagenDenuncia], 
     [View_denuncias_recibidas].[VideoDenuncia] AS [VideoDenuncia], 
     [View_denuncias_recibidas].[FechaCreacion] AS [FechaCreacion], 
-    [View_denuncias_recibidas].[TipoProducto] AS [TipoProducto]
+    [View_denuncias_recibidas].[TipoProducto] AS [TipoProducto], 
+    [View_denuncias_recibidas].[RegistroSanitario] AS [RegistroSanitario]
     FROM [dbo].[View_denuncias_recibidas] AS [View_denuncias_recibidas]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="View_seguimiento_denuncias" EntityType="Self.View_seguimiento_denuncias" store:Type="Views" store:Schema="dbo">
@@ -474,21 +488,22 @@ warning 6002: The table/view 'DEMAPS.dbo.View_seguimiento_denuncias' does not ha
     [View_seguimiento_denuncias].[Establecimiento] AS [Establecimiento], 
     [View_seguimiento_denuncias].[Producto] AS [Producto], 
     [View_seguimiento_denuncias].[Estado] AS [Estado], 
-    [View_seguimiento_denuncias].[ImagenDenuncia] AS [ImagenDenuncia], 
     [View_seguimiento_denuncias].[Status] AS [Status], 
     [View_seguimiento_denuncias].[Usuario] AS [Usuario], 
     [View_seguimiento_denuncias].[Perfil] AS [Perfil], 
     [View_seguimiento_denuncias].[FechaCreacion] AS [FechaCreacion], 
     [View_seguimiento_denuncias].[Activo] AS [Activo], 
     [View_seguimiento_denuncias].[UltModifFecha] AS [UltModifFecha], 
-    [View_seguimiento_denuncias].[UltModifUsuarioID] AS [UltModifUsuarioID]
+    [View_seguimiento_denuncias].[UltModifUsuarioID] AS [UltModifUsuarioID], 
+    [View_seguimiento_denuncias].[RegistroSanitario] AS [RegistroSanitario], 
+    [View_seguimiento_denuncias].[Tipo] AS [Tipo]
     FROM [dbo].[View_seguimiento_denuncias] AS [View_seguimiento_denuncias]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_tbl_denuncias_tbl_estados_denuncias" Association="Self.FK_tbl_denuncias_tbl_estados_denuncias">
             <End Role="tbl_estados_denuncias" EntitySet="tbl_estados_denuncias" />
             <End Role="tbl_denuncias" EntitySet="tbl_denuncias" />
           </AssociationSet>
-          <AssociationSet Name="FK_tbl_denuncias_TipoProductoID" Association="Self.FK_tbl_denuncias_TipoProductoID">
+          <AssociationSet Name="FK_tbl_denuncias_tbl_tipos_productos" Association="Self.FK_tbl_denuncias_tbl_tipos_productos">
             <End Role="tbl_tipos_productos" EntitySet="tbl_tipos_productos" />
             <End Role="tbl_denuncias" EntitySet="tbl_denuncias" />
           </AssociationSet>
@@ -554,23 +569,6 @@ warning 6002: The table/view 'DEMAPS.dbo.View_seguimiento_denuncias' does not ha
           <Property Name="Activo" Type="Byte" />
           <NavigationProperty Name="tbl_seguimiento_denuncias" Relationship="Self.FK_tbl_seguimiento_denuncias_tbl_ComentarioID" FromRole="tbl_comentarios_denuncias" ToRole="tbl_seguimiento_denuncias" />
         </EntityType>
-        <EntityType Name="tbl_denuncias">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="TipoProductoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="EstadoDenunciaID" Type="Int32" />
-          <Property Name="CedulaDenunciante" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Producto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Establecimiento" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
-          <Property Name="Activo" Type="Byte" />
-          <NavigationProperty Name="tbl_estados_denuncias" Relationship="Self.FK_tbl_denuncias_tbl_estados_denuncias" FromRole="tbl_denuncias" ToRole="tbl_estados_denuncias" />
-          <NavigationProperty Name="tbl_tipos_productos" Relationship="Self.FK_tbl_denuncias_TipoProductoID" FromRole="tbl_denuncias" ToRole="tbl_tipos_productos" />
-          <NavigationProperty Name="tbl_evidencias_denuncias" Relationship="Self.FK_tbl_evidencias_denuncias_tbl_evidencias_denuncias" FromRole="tbl_denuncias" ToRole="tbl_evidencias_denuncias" />
-          <NavigationProperty Name="tbl_seguimiento_denuncias" Relationship="Self.FK_tbl_seguimiento_denuncias_DenunciaID" FromRole="tbl_denuncias" ToRole="tbl_seguimiento_denuncias" />
-        </EntityType>
         <EntityType Name="tbl_estados_denuncias">
           <Key>
             <PropertyRef Name="Id" />
@@ -581,7 +579,7 @@ warning 6002: The table/view 'DEMAPS.dbo.View_seguimiento_denuncias' does not ha
           <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
           <Property Name="CreadoPor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Activo" Type="Byte" />
-          <NavigationProperty Name="tbl_denuncias" Relationship="Self.FK_tbl_denuncias_tbl_estados_denuncias" FromRole="tbl_estados_denuncias" ToRole="tbl_denuncias" />
+          <NavigationProperty Name="tbl_denuncias" Relationship="DEMAPSModel.FK_tbl_denuncias_tbl_estados_denuncias" FromRole="tbl_estados_denuncias" ToRole="tbl_denuncias" />
         </EntityType>
         <EntityType Name="tbl_evidencias_denuncias">
           <Key>
@@ -593,7 +591,7 @@ warning 6002: The table/view 'DEMAPS.dbo.View_seguimiento_denuncias' does not ha
           <Property Name="VideoDenuncia" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
           <Property Name="Activo" Type="Byte" />
-          <NavigationProperty Name="tbl_denuncias" Relationship="Self.FK_tbl_evidencias_denuncias_tbl_evidencias_denuncias" FromRole="tbl_evidencias_denuncias" ToRole="tbl_denuncias" />
+          <NavigationProperty Name="tbl_denuncias" Relationship="DEMAPSModel.FK_tbl_evidencias_denuncias_tbl_evidencias_denuncias" FromRole="tbl_evidencias_denuncias" ToRole="tbl_denuncias" />
         </EntityType>
         <EntityType Name="tbl_modulos">
           <Key>
@@ -649,9 +647,9 @@ warning 6002: The table/view 'DEMAPS.dbo.View_seguimiento_denuncias' does not ha
           <Property Name="UltModifUsuarioID" Type="Int32" />
           <Property Name="Activo" Type="Byte" />
           <NavigationProperty Name="tbl_comentarios_denuncias" Relationship="Self.FK_tbl_seguimiento_denuncias_tbl_ComentarioID" FromRole="tbl_seguimiento_denuncias" ToRole="tbl_comentarios_denuncias" />
-          <NavigationProperty Name="tbl_denuncias" Relationship="Self.FK_tbl_seguimiento_denuncias_DenunciaID" FromRole="tbl_seguimiento_denuncias" ToRole="tbl_denuncias" />
           <NavigationProperty Name="tbl_usuarios" Relationship="Self.FK_tbl_seguimiento_denuncias_AsignadaUsuarioID" FromRole="tbl_seguimiento_denuncias" ToRole="tbl_usuarios" />
           <NavigationProperty Name="tbl_status_denuncias" Relationship="Self.FK_tbl_seguimiento_denuncias_StatusID" FromRole="tbl_seguimiento_denuncias" ToRole="tbl_status_denuncias" />
+          <NavigationProperty Name="tbl_denuncias" Relationship="DEMAPSModel.FK_tbl_seguimiento_denuncias_DenunciaID" FromRole="tbl_seguimiento_denuncias" ToRole="tbl_denuncias" />
         </EntityType>
         <EntityType Name="tbl_status_denuncias">
           <Key>
@@ -664,18 +662,6 @@ warning 6002: The table/view 'DEMAPS.dbo.View_seguimiento_denuncias' does not ha
           <Property Name="CreadoPor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Activo" Type="Byte" />
           <NavigationProperty Name="tbl_seguimiento_denuncias" Relationship="Self.FK_tbl_seguimiento_denuncias_StatusID" FromRole="tbl_status_denuncias" ToRole="tbl_seguimiento_denuncias" />
-        </EntityType>
-        <EntityType Name="tbl_tipos_productos">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
-          <Property Name="CreadoPor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Activo" Type="Byte" />
-          <NavigationProperty Name="tbl_denuncias" Relationship="Self.FK_tbl_denuncias_TipoProductoID" FromRole="tbl_tipos_productos" ToRole="tbl_denuncias" />
         </EntityType>
         <EntityType Name="tbl_usuarios">
           <Key>
@@ -713,6 +699,7 @@ warning 6002: The table/view 'DEMAPS.dbo.View_seguimiento_denuncias' does not ha
           <Property Name="UltModifFecha" Type="DateTime" Precision="0" />
           <Property Name="CreadoPorUsuarioID" Type="Int32" />
           <Property Name="TipoProducto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RegistroSanitario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="View_denuncias_finalizadas">
           <Key>
@@ -727,6 +714,7 @@ warning 6002: The table/view 'DEMAPS.dbo.View_seguimiento_denuncias' does not ha
           <Property Name="VideoDenuncia" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
           <Property Name="TipoProducto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RegistroSanitario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="View_denuncias_investigacion">
           <Key>
@@ -741,6 +729,7 @@ warning 6002: The table/view 'DEMAPS.dbo.View_seguimiento_denuncias' does not ha
           <Property Name="VideoDenuncia" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
           <Property Name="TipoProducto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RegistroSanitario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="View_denuncias_recibidas">
           <Key>
@@ -755,6 +744,7 @@ warning 6002: The table/view 'DEMAPS.dbo.View_seguimiento_denuncias' does not ha
           <Property Name="VideoDenuncia" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
           <Property Name="TipoProducto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RegistroSanitario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_tbl_seguimiento_denuncias_tbl_ComentarioID">
           <End Role="tbl_comentarios_denuncias" Type="Self.tbl_comentarios_denuncias" Multiplicity="0..1" />
@@ -765,54 +755,6 @@ warning 6002: The table/view 'DEMAPS.dbo.View_seguimiento_denuncias' does not ha
             </Principal>
             <Dependent Role="tbl_seguimiento_denuncias">
               <PropertyRef Name="ComentarioID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbl_denuncias_tbl_estados_denuncias">
-          <End Role="tbl_estados_denuncias" Type="Self.tbl_estados_denuncias" Multiplicity="0..1" />
-          <End Role="tbl_denuncias" Type="Self.tbl_denuncias" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbl_estados_denuncias">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="tbl_denuncias">
-              <PropertyRef Name="EstadoDenunciaID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbl_denuncias_TipoProductoID">
-          <End Role="tbl_tipos_productos" Type="Self.tbl_tipos_productos" Multiplicity="1" />
-          <End Role="tbl_denuncias" Type="Self.tbl_denuncias" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbl_tipos_productos">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="tbl_denuncias">
-              <PropertyRef Name="TipoProductoID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbl_evidencias_denuncias_tbl_evidencias_denuncias">
-          <End Role="tbl_denuncias" Type="Self.tbl_denuncias" Multiplicity="0..1" />
-          <End Role="tbl_evidencias_denuncias" Type="Self.tbl_evidencias_denuncias" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbl_denuncias">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="tbl_evidencias_denuncias">
-              <PropertyRef Name="DenunciaID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tbl_seguimiento_denuncias_DenunciaID">
-          <End Role="tbl_denuncias" Type="Self.tbl_denuncias" Multiplicity="0..1" />
-          <End Role="tbl_seguimiento_denuncias" Type="Self.tbl_seguimiento_denuncias" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbl_denuncias">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="tbl_seguimiento_denuncias">
-              <PropertyRef Name="DenunciaID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -891,7 +833,6 @@ warning 6002: The table/view 'DEMAPS.dbo.View_seguimiento_denuncias' does not ha
         <EntityContainer Name="DEMAPSEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="tbl_comentarios_denuncias" EntityType="Self.tbl_comentarios_denuncias" />
-          <EntitySet Name="tbl_denuncias" EntityType="Self.tbl_denuncias" />
           <EntitySet Name="tbl_estados_denuncias" EntityType="Self.tbl_estados_denuncias" />
           <EntitySet Name="tbl_evidencias_denuncias" EntityType="Self.tbl_evidencias_denuncias" />
           <EntitySet Name="tbl_modulos" EntityType="Self.tbl_modulos" />
@@ -899,7 +840,6 @@ warning 6002: The table/view 'DEMAPS.dbo.View_seguimiento_denuncias' does not ha
           <EntitySet Name="tbl_perfiles_usuarios" EntityType="Self.tbl_perfiles_usuarios" />
           <EntitySet Name="tbl_seguimiento_denuncias" EntityType="Self.tbl_seguimiento_denuncias" />
           <EntitySet Name="tbl_status_denuncias" EntityType="Self.tbl_status_denuncias" />
-          <EntitySet Name="tbl_tipos_productos" EntityType="Self.tbl_tipos_productos" />
           <EntitySet Name="tbl_usuarios" EntityType="Self.tbl_usuarios" />
           <EntitySet Name="View_denuncias_falladas" EntityType="Self.View_denuncias_falladas" />
           <EntitySet Name="View_denuncias_finalizadas" EntityType="Self.View_denuncias_finalizadas" />
@@ -907,22 +847,6 @@ warning 6002: The table/view 'DEMAPS.dbo.View_seguimiento_denuncias' does not ha
           <EntitySet Name="View_denuncias_recibidas" EntityType="Self.View_denuncias_recibidas" />
           <AssociationSet Name="FK_tbl_seguimiento_denuncias_tbl_ComentarioID" Association="Self.FK_tbl_seguimiento_denuncias_tbl_ComentarioID">
             <End Role="tbl_comentarios_denuncias" EntitySet="tbl_comentarios_denuncias" />
-            <End Role="tbl_seguimiento_denuncias" EntitySet="tbl_seguimiento_denuncias" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbl_denuncias_tbl_estados_denuncias" Association="Self.FK_tbl_denuncias_tbl_estados_denuncias">
-            <End Role="tbl_estados_denuncias" EntitySet="tbl_estados_denuncias" />
-            <End Role="tbl_denuncias" EntitySet="tbl_denuncias" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbl_denuncias_TipoProductoID" Association="Self.FK_tbl_denuncias_TipoProductoID">
-            <End Role="tbl_tipos_productos" EntitySet="tbl_tipos_productos" />
-            <End Role="tbl_denuncias" EntitySet="tbl_denuncias" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbl_evidencias_denuncias_tbl_evidencias_denuncias" Association="Self.FK_tbl_evidencias_denuncias_tbl_evidencias_denuncias">
-            <End Role="tbl_denuncias" EntitySet="tbl_denuncias" />
-            <End Role="tbl_evidencias_denuncias" EntitySet="tbl_evidencias_denuncias" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tbl_seguimiento_denuncias_DenunciaID" Association="Self.FK_tbl_seguimiento_denuncias_DenunciaID">
-            <End Role="tbl_denuncias" EntitySet="tbl_denuncias" />
             <End Role="tbl_seguimiento_denuncias" EntitySet="tbl_seguimiento_denuncias" />
           </AssociationSet>
           <AssociationSet Name="FK_tbl_perfiles_permisos_ModuloID" Association="Self.FK_tbl_perfiles_permisos_ModuloID">
@@ -951,6 +875,24 @@ warning 6002: The table/view 'DEMAPS.dbo.View_seguimiento_denuncias' does not ha
           </AssociationSet>
           <EntitySet Name="View_denuncias" EntityType="DEMAPSModel.View_denuncias" />
           <EntitySet Name="View_seguimiento_denuncias" EntityType="DEMAPSModel.View_seguimiento_denuncias" />
+          <EntitySet Name="tbl_denuncias" EntityType="DEMAPSModel.tbl_denuncias" />
+          <EntitySet Name="tbl_tipos_productos" EntityType="DEMAPSModel.tbl_tipos_productos" />
+          <AssociationSet Name="FK_tbl_denuncias_tbl_estados_denuncias" Association="DEMAPSModel.FK_tbl_denuncias_tbl_estados_denuncias">
+            <End Role="tbl_estados_denuncias" EntitySet="tbl_estados_denuncias" />
+            <End Role="tbl_denuncias" EntitySet="tbl_denuncias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_denuncias_tbl_tipos_productos" Association="DEMAPSModel.FK_tbl_denuncias_tbl_tipos_productos">
+            <End Role="tbl_tipos_productos" EntitySet="tbl_tipos_productos" />
+            <End Role="tbl_denuncias" EntitySet="tbl_denuncias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_evidencias_denuncias_tbl_evidencias_denuncias" Association="DEMAPSModel.FK_tbl_evidencias_denuncias_tbl_evidencias_denuncias">
+            <End Role="tbl_denuncias" EntitySet="tbl_denuncias" />
+            <End Role="tbl_evidencias_denuncias" EntitySet="tbl_evidencias_denuncias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_seguimiento_denuncias_DenunciaID" Association="DEMAPSModel.FK_tbl_seguimiento_denuncias_DenunciaID">
+            <End Role="tbl_denuncias" EntitySet="tbl_denuncias" />
+            <End Role="tbl_seguimiento_denuncias" EntitySet="tbl_seguimiento_denuncias" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="View_denuncias">
           <Key>
@@ -965,6 +907,7 @@ warning 6002: The table/view 'DEMAPS.dbo.View_seguimiento_denuncias' does not ha
           <Property Name="Tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
           <Property Name="Activo" Type="Byte" />
+          <Property Name="RegistroSanitario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="View_seguimiento_denuncias">
           <Key>
@@ -975,7 +918,6 @@ warning 6002: The table/view 'DEMAPS.dbo.View_seguimiento_denuncias' does not ha
           <Property Name="Establecimiento" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Producto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ImagenDenuncia" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Perfil" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -983,7 +925,89 @@ warning 6002: The table/view 'DEMAPS.dbo.View_seguimiento_denuncias' does not ha
           <Property Name="Activo" Type="Byte" />
           <Property Name="UltModifFecha" Type="DateTime" Precision="0" />
           <Property Name="UltModifUsuarioID" Type="Int32" />
+          <Property Name="RegistroSanitario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="tbl_denuncias">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoProductoID" Type="Int32" />
+          <Property Name="EstadoDenunciaID" Type="Int32" />
+          <Property Name="CedulaDenunciante" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Producto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Establecimiento" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
+          <Property Name="Activo" Type="Byte" />
+          <Property Name="RegistroSanitario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Latitud" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Longitud" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_estados_denuncias" Relationship="DEMAPSModel.FK_tbl_denuncias_tbl_estados_denuncias" FromRole="tbl_denuncias" ToRole="tbl_estados_denuncias" />
+          <NavigationProperty Name="tbl_tipos_productos" Relationship="DEMAPSModel.FK_tbl_denuncias_tbl_tipos_productos" FromRole="tbl_denuncias" ToRole="tbl_tipos_productos" />
+          <NavigationProperty Name="tbl_evidencias_denuncias" Relationship="DEMAPSModel.FK_tbl_evidencias_denuncias_tbl_evidencias_denuncias" FromRole="tbl_denuncias" ToRole="tbl_evidencias_denuncias" />
+          <NavigationProperty Name="tbl_seguimiento_denuncias" Relationship="DEMAPSModel.FK_tbl_seguimiento_denuncias_DenunciaID" FromRole="tbl_denuncias" ToRole="tbl_seguimiento_denuncias" />
+        </EntityType>
+        <EntityType Name="tbl_tipos_productos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
+          <Property Name="CreadoPor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Activo" Type="Byte" />
+          <NavigationProperty Name="tbl_denuncias" Relationship="DEMAPSModel.FK_tbl_denuncias_tbl_tipos_productos" FromRole="tbl_tipos_productos" ToRole="tbl_denuncias" />
+        </EntityType>
+        <Association Name="FK_tbl_denuncias_tbl_estados_denuncias">
+          <End Type="DEMAPSModel.tbl_estados_denuncias" Role="tbl_estados_denuncias" Multiplicity="0..1" />
+          <End Type="DEMAPSModel.tbl_denuncias" Role="tbl_denuncias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_estados_denuncias">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_denuncias">
+              <PropertyRef Name="EstadoDenunciaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_denuncias_tbl_tipos_productos">
+          <End Type="DEMAPSModel.tbl_tipos_productos" Role="tbl_tipos_productos" Multiplicity="0..1" />
+          <End Type="DEMAPSModel.tbl_denuncias" Role="tbl_denuncias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_tipos_productos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_denuncias">
+              <PropertyRef Name="TipoProductoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_evidencias_denuncias_tbl_evidencias_denuncias">
+          <End Type="DEMAPSModel.tbl_denuncias" Role="tbl_denuncias" Multiplicity="0..1" />
+          <End Type="DEMAPSModel.tbl_evidencias_denuncias" Role="tbl_evidencias_denuncias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_denuncias">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_evidencias_denuncias">
+              <PropertyRef Name="DenunciaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_seguimiento_denuncias_DenunciaID">
+          <End Type="DEMAPSModel.tbl_denuncias" Role="tbl_denuncias" Multiplicity="0..1" />
+          <End Type="DEMAPSModel.tbl_seguimiento_denuncias" Role="tbl_seguimiento_denuncias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_denuncias">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_seguimiento_denuncias">
+              <PropertyRef Name="DenunciaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1008,20 +1032,6 @@ warning 6002: The table/view 'DEMAPS.dbo.View_seguimiento_denuncias' does not ha
                 <ScalarProperty Name="Comentario" ColumnName="Comentario" />
                 <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
                 <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
-                <ScalarProperty Name="Activo" ColumnName="Activo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbl_denuncias">
-            <EntityTypeMapping TypeName="DEMAPSModel.tbl_denuncias">
-              <MappingFragment StoreEntitySet="tbl_denuncias">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="TipoProductoID" ColumnName="TipoProductoID" />
-                <ScalarProperty Name="EstadoDenunciaID" ColumnName="EstadoDenunciaID" />
-                <ScalarProperty Name="CedulaDenunciante" ColumnName="CedulaDenunciante" />
-                <ScalarProperty Name="Producto" ColumnName="Producto" />
-                <ScalarProperty Name="Establecimiento" ColumnName="Establecimiento" />
-                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
                 <ScalarProperty Name="Activo" ColumnName="Activo" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1113,18 +1123,6 @@ warning 6002: The table/view 'DEMAPS.dbo.View_seguimiento_denuncias' does not ha
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tbl_tipos_productos">
-            <EntityTypeMapping TypeName="DEMAPSModel.tbl_tipos_productos">
-              <MappingFragment StoreEntitySet="tbl_tipos_productos">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
-                <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
-                <ScalarProperty Name="Activo" ColumnName="Activo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tbl_usuarios">
             <EntityTypeMapping TypeName="DEMAPSModel.tbl_usuarios">
               <MappingFragment StoreEntitySet="tbl_usuarios">
@@ -1143,6 +1141,7 @@ warning 6002: The table/view 'DEMAPS.dbo.View_seguimiento_denuncias' does not ha
           <EntitySetMapping Name="View_denuncias_falladas">
             <EntityTypeMapping TypeName="DEMAPSModel.View_denuncias_falladas">
               <MappingFragment StoreEntitySet="View_denuncias_falladas">
+                <ScalarProperty Name="RegistroSanitario" ColumnName="RegistroSanitario" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CedulaDenunciante" ColumnName="CedulaDenunciante" />
                 <ScalarProperty Name="Producto" ColumnName="Producto" />
@@ -1165,6 +1164,7 @@ warning 6002: The table/view 'DEMAPS.dbo.View_seguimiento_denuncias' does not ha
           <EntitySetMapping Name="View_denuncias_finalizadas">
             <EntityTypeMapping TypeName="DEMAPSModel.View_denuncias_finalizadas">
               <MappingFragment StoreEntitySet="View_denuncias_finalizadas">
+                <ScalarProperty Name="RegistroSanitario" ColumnName="RegistroSanitario" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CedulaDenunciante" ColumnName="CedulaDenunciante" />
                 <ScalarProperty Name="Producto" ColumnName="Producto" />
@@ -1180,6 +1180,7 @@ warning 6002: The table/view 'DEMAPS.dbo.View_seguimiento_denuncias' does not ha
           <EntitySetMapping Name="View_denuncias_investigacion">
             <EntityTypeMapping TypeName="DEMAPSModel.View_denuncias_investigacion">
               <MappingFragment StoreEntitySet="View_denuncias_investigacion">
+                <ScalarProperty Name="RegistroSanitario" ColumnName="RegistroSanitario" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CedulaDenunciante" ColumnName="CedulaDenunciante" />
                 <ScalarProperty Name="Producto" ColumnName="Producto" />
@@ -1195,6 +1196,7 @@ warning 6002: The table/view 'DEMAPS.dbo.View_seguimiento_denuncias' does not ha
           <EntitySetMapping Name="View_denuncias_recibidas">
             <EntityTypeMapping TypeName="DEMAPSModel.View_denuncias_recibidas">
               <MappingFragment StoreEntitySet="View_denuncias_recibidas">
+                <ScalarProperty Name="RegistroSanitario" ColumnName="RegistroSanitario" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CedulaDenunciante" ColumnName="CedulaDenunciante" />
                 <ScalarProperty Name="Producto" ColumnName="Producto" />
@@ -1210,6 +1212,7 @@ warning 6002: The table/view 'DEMAPS.dbo.View_seguimiento_denuncias' does not ha
           <EntitySetMapping Name="View_denuncias">
             <EntityTypeMapping TypeName="DEMAPSModel.View_denuncias">
               <MappingFragment StoreEntitySet="View_denuncias">
+                <ScalarProperty Name="RegistroSanitario" ColumnName="RegistroSanitario" />
                 <ScalarProperty Name="Activo" ColumnName="Activo" />
                 <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
                 <ScalarProperty Name="Tipo" ColumnName="Tipo" />
@@ -1225,6 +1228,8 @@ warning 6002: The table/view 'DEMAPS.dbo.View_seguimiento_denuncias' does not ha
           <EntitySetMapping Name="View_seguimiento_denuncias">
             <EntityTypeMapping TypeName="DEMAPSModel.View_seguimiento_denuncias">
               <MappingFragment StoreEntitySet="View_seguimiento_denuncias">
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="RegistroSanitario" ColumnName="RegistroSanitario" />
                 <ScalarProperty Name="UltModifUsuarioID" ColumnName="UltModifUsuarioID" />
                 <ScalarProperty Name="UltModifFecha" ColumnName="UltModifFecha" />
                 <ScalarProperty Name="Activo" ColumnName="Activo" />
@@ -1232,11 +1237,39 @@ warning 6002: The table/view 'DEMAPS.dbo.View_seguimiento_denuncias' does not ha
                 <ScalarProperty Name="Perfil" ColumnName="Perfil" />
                 <ScalarProperty Name="Usuario" ColumnName="Usuario" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="ImagenDenuncia" ColumnName="ImagenDenuncia" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="Producto" ColumnName="Producto" />
                 <ScalarProperty Name="Establecimiento" ColumnName="Establecimiento" />
                 <ScalarProperty Name="CedulaDenunciante" ColumnName="CedulaDenunciante" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_denuncias">
+            <EntityTypeMapping TypeName="DEMAPSModel.tbl_denuncias">
+              <MappingFragment StoreEntitySet="tbl_denuncias">
+                <ScalarProperty Name="Longitud" ColumnName="Longitud" />
+                <ScalarProperty Name="Latitud" ColumnName="Latitud" />
+                <ScalarProperty Name="RegistroSanitario" ColumnName="RegistroSanitario" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="Establecimiento" ColumnName="Establecimiento" />
+                <ScalarProperty Name="Producto" ColumnName="Producto" />
+                <ScalarProperty Name="CedulaDenunciante" ColumnName="CedulaDenunciante" />
+                <ScalarProperty Name="EstadoDenunciaID" ColumnName="EstadoDenunciaID" />
+                <ScalarProperty Name="TipoProductoID" ColumnName="TipoProductoID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_tipos_productos">
+            <EntityTypeMapping TypeName="DEMAPSModel.tbl_tipos_productos">
+              <MappingFragment StoreEntitySet="tbl_tipos_productos">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

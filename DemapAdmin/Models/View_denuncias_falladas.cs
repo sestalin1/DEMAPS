@@ -30,5 +30,6 @@ namespace DemapAdmin.Models
         public Nullable<System.DateTime> UltModifFecha { get; set; }
         public Nullable<int> CreadoPorUsuarioID { get; set; }
         public string TipoProducto { get; set; }
+        public string RegistroSanitario { get; set; }
     }
 }

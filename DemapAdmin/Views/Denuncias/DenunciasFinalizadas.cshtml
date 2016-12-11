@@ -22,8 +22,9 @@
                         <thead>
                             <tr>
                                 <th> Cédula (Denunciante)</th>
+                                <th> @Html.DisplayNameFor(model => model.RegistroSanitario) </th>
                                 <th> @Html.DisplayNameFor(model => model.Producto) </th>
-                                <th>@Html.DisplayNameFor(model => model.Tipo)</th>
+                                <th>@Html.DisplayNameFor(model => model.TipoProducto)</th>
                                 <th> @Html.DisplayNameFor(model => model.Establecimiento) </th>
 
                                 <th> @Html.DisplayNameFor(model => model.Estado) </th>
@@ -41,12 +42,16 @@
                                     <td>
                                         @Html.DisplayFor(modelItem => item.CedulaDenunciante)
                                     </td>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.RegistroSanitario)
+                                    </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Producto)
                                     </td>
 
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Tipo)
+                                        @Html.DisplayFor(modelItem => item.TipoProducto)
                                     </td>
 
                                     <td>

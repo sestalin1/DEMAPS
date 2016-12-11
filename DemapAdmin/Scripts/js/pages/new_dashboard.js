@@ -4,15 +4,15 @@ $(document).ready(function() {
     // =====================main chart js============================
     // tabs 1
     //start area chart
-    var da1 = [["Jan", 80],["Feb", 100],["Mar", 95],["Apr", 105],["May", 80],["Jun", 95],["Jul", 80],["Aug", 90],["Sep", 115],["Oct", 90],["Nov", 85],["Dec", 90]];
-    var da2 = [["Jan", 40],["Feb", 60],["Mar", 50],["Apr", 60],["May", 35],["Jun", 45],["Jul", 30],["Aug", 40],["Sep", 60],["Oct", 40],["Nov", 60],["Dec", 35]];
+    var da1 = [["Jan", 0],["Feb", 0],["Mar", 0],["Apr", 0],["May", 0],["Jun", 0],["Jul", 0],["Aug", 0],["Sep", 0],["Oct", 0],["Nov", 0],["Dec", 1]];
+    var da2 = [["Jan", 0],["Feb", 0],["Mar", 0],["Apr", 0],["May", 0],["Jun", 0],["Jul", 0],["Aug", 0],["Sep", 0],["Oct", 0],["Nov", 0],["Dec", 0]];
     $.plot("#area-chart", [{
         data: da1,
-        label: "Views",
+        label: "Denuncias de Alimentos",
         color: "#69d3be"
     },{
         data: da2,
-        label: "Likes",
+        label: "Denuncias de Medicamentos",
         color: "#4FB7FE"
     }], {
         series: {

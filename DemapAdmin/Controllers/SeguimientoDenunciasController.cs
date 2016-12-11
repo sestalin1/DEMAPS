@@ -18,32 +18,27 @@ namespace DemapAdmin.Controllers
         // GET: SeguimientoDenuncias
         public async Task<ActionResult> Index()
         {
-            var tbl_seguimiento_denuncias = db.tbl_seguimiento_denuncias.Include(t => t.tbl_comentarios_denuncias).Include(t => t.tbl_denuncias).Include(t => t.tbl_usuarios).Include(t => t.tbl_status_denuncias);
-            return View(await tbl_seguimiento_denuncias.ToListAsync());
+            return View(await db.View_seguimiento_denuncias.ToListAsync());
         }
 
-        // GET: SeguimientoDenuncias/Details/5
+        // GET: SeguimientoDenuncias/Details/56
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tbl_seguimiento_denuncias tbl_seguimiento_denuncias = await db.tbl_seguimiento_denuncias.FindAsync(id);
-            if (tbl_seguimiento_denuncias == null)
+            View_seguimiento_denuncias view_seguimiento_denuncias = await db.View_seguimiento_denuncias.FindAsync(id);
+            if (view_seguimiento_denuncias == null)
             {
                 return HttpNotFound();
             }
-            return View(tbl_seguimiento_denuncias);
+            return View(view_seguimiento_denuncias);
         }
 
         // GET: SeguimientoDenuncias/Create
         public ActionResult Create()
         {
-            ViewBag.ComentarioID = new SelectList(db.tbl_comentarios_denuncias, "Id", "Comentario");
-            ViewBag.DenunciaID = new SelectList(db.tbl_denuncias, "Id", "CedulaDenunciante");
-            ViewBag.AsignadaUsuarioID = new SelectList(db.tbl_usuarios, "Id", "Nombre");
-            ViewBag.StatusDenunciaID = new SelectList(db.tbl_status_denuncias, "Id", "Status");
             return View();
         }
 
@@ -52,20 +47,16 @@ namespace DemapAdmin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,DenunciaID,ComentarioID,AsignadaUsuarioID,StatusDenunciaID,FechaCreacion,CreadoPorUsuarioID,UltModifFecha,UltModifUsuarioID,Activo")] tbl_seguimiento_denuncias tbl_seguimiento_denuncias)
+        public async Task<ActionResult> Create([Bind(Include = "Id,CedulaDenunciante,Establecimiento,Producto,Estado,Status,Usuario,Perfil,FechaCreacion,Activo,UltModifFecha,UltModifUsuarioID,RegistroSanitario")] View_seguimiento_denuncias view_seguimiento_denuncias)
         {
             if (ModelState.IsValid)
             {
-                db.tbl_seguimiento_denuncias.Add(tbl_seguimiento_denuncias);
+                db.View_seguimiento_denuncias.Add(view_seguimiento_denuncias);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ComentarioID = new SelectList(db.tbl_comentarios_denuncias, "Id", "Comentario", tbl_seguimiento_denuncias.ComentarioID);
-            ViewBag.DenunciaID = new SelectList(db.tbl_denuncias, "Id", "CedulaDenunciante", tbl_seguimiento_denuncias.DenunciaID);
-            ViewBag.AsignadaUsuarioID = new SelectList(db.tbl_usuarios, "Id", "Nombre", tbl_seguimiento_denuncias.AsignadaUsuarioID);
-            ViewBag.StatusDenunciaID = new SelectList(db.tbl_status_denuncias, "Id", "Status", tbl_seguimiento_denuncias.StatusDenunciaID);
-            return View(tbl_seguimiento_denuncias);
+            return View(view_seguimiento_denuncias);
         }
 
         // GET: SeguimientoDenuncias/Edit/5
@@ -75,16 +66,12 @@ namespace DemapAdmin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            tbl_seguimiento_denuncias tbl_seguimiento_denuncias = await db.tbl_seguimiento_denuncias.FindAsync(id);
-            if (tbl_seguimiento_denuncias == null)
+            View_seguimiento_denuncias view_seguimiento_denuncias = await db.View_seguimiento_denuncias.FindAsync(id);
+            if (view_seguimiento_denuncias == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.ComentarioID = new SelectList(db.tbl_comentarios_denuncias, "Id", "Comentario", tbl_seguimiento_denuncias.ComentarioID);
-            ViewBag.DenunciaID = new SelectList(db.tbl_denuncias, "Id", "CedulaDenunciante", tbl_seguimiento_denuncias.DenunciaID);
-            ViewBag.AsignadaUsuarioID = new SelectList(db.tbl_usuarios, "Id", "Nombre", tbl_seguimiento_denuncias.AsignadaUsuarioID);
-            ViewBag.StatusDenunciaID = new SelectList(db.tbl_status_denuncias, "Id", "Status", tbl_seguimiento_denuncias.StatusDenunciaID);
-            return View(tbl_seguimiento_denuncias);
+            return View(view_seguimiento_denuncias);
         }
 
         // POST: SeguimientoDenuncias/Edit/5
@@ -92,52 +79,110 @@ namespace DemapAdmin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,DenunciaID,ComentarioID,AsignadaUsuarioID,StatusDenunciaID,FechaCreacion,CreadoPorUsuarioID,UltModifFecha,UltModifUsuarioID,Activo")] tbl_seguimiento_denuncias tbl_seguimiento_denuncias)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,CedulaDenunciante,Establecimiento,Producto,Estado,Status,Usuario,Perfil,FechaCreacion,Activo,UltModifFecha,UltModifUsuarioID,RegistroSanitario")] View_seguimiento_denuncias view_seguimiento_denuncias)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(tbl_seguimiento_denuncias).State = EntityState.Modified;
+                db.Entry(view_seguimiento_denuncias).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.ComentarioID = new SelectList(db.tbl_comentarios_denuncias, "Id", "Comentario", tbl_seguimiento_denuncias.ComentarioID);
-            ViewBag.DenunciaID = new SelectList(db.tbl_denuncias, "Id", "CedulaDenunciante", tbl_seguimiento_denuncias.DenunciaID);
-            ViewBag.AsignadaUsuarioID = new SelectList(db.tbl_usuarios, "Id", "Nombre", tbl_seguimiento_denuncias.AsignadaUsuarioID);
-            ViewBag.StatusDenunciaID = new SelectList(db.tbl_status_denuncias, "Id", "Status", tbl_seguimiento_denuncias.StatusDenunciaID);
-            return View(tbl_seguimiento_denuncias);
+            return View(view_seguimiento_denuncias);
         }
 
-    
+        // GET: SeguimientoDenuncias/Delete/5
+        public async Task<ActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            View_seguimiento_denuncias view_seguimiento_denuncias = await db.View_seguimiento_denuncias.FindAsync(id);
+            if (view_seguimiento_denuncias == null)
+            {
+                return HttpNotFound();
+            }
+            return View(view_seguimiento_denuncias);
+        }
+
+        // POST: SeguimientoDenuncias/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> DeleteConfirmed(int id)
+        {
+            View_seguimiento_denuncias view_seguimiento_denuncias = await db.View_seguimiento_denuncias.FindAsync(id);
+            db.View_seguimiento_denuncias.Remove(view_seguimiento_denuncias);
+            await db.SaveChangesAsync();
+            return RedirectToAction("Index");
+        }
 
 
-        public ActionResult Panel(int ? id)
+
+        public ActionResult Panel(int? id)
         {
             if (id != null)
             {
                 // var DenunciaInfo = db.tbl_denuncias.Where(d=>d.Id == id).Include();
 
-                var DenunciaInfo = db.View_seguimiento_denuncias.Where(d=>d.Id == id).ToList();//db.tbl_seguimiento_denuncias.Include(t => t.tbl_comentarios_denuncias).Include(t => t.tbl_denuncias).Include(t => t.tbl_usuarios).Include(t => t.tbl_status_denuncias).Where(d=>d.DenunciaID == id);
+                var DenunciaInfo = db.View_seguimiento_denuncias.Where(d => d.Id == id).ToList();//db.tbl_seguimiento_denuncias.Include(t => t.tbl_comentarios_denuncias).Include(t => t.tbl_denuncias).Include(t => t.tbl_usuarios).Include(t => t.tbl_status_denuncias).Where(d=>d.DenunciaID == id);
 
                 ViewBag.DenunciaArray = DenunciaInfo;
 
                 return View(DenunciaInfo);
 
- 
+
             }
             else
             {
                 return View();
             }
-            
-          
+
+
         }
 
 
 
+        public async Task<ActionResult> DenunciasRecibidas()
+        {
+
+            var DenunciasRecibidas = db.View_denuncias_recibidas.ToListAsync();
+            return View(await DenunciasRecibidas);
+
+        }
+
+        public async Task<ActionResult> DenunciasFalladas()
+        {
+
+            var DenunciasFalladas = db.View_denuncias_falladas.ToListAsync();
+            return View(await DenunciasFalladas);
+
+        }
 
 
+        public async Task<ActionResult> DenunciasFinalizadas()
+        {
 
+            var DenunciasFinalizadas = db.View_denuncias_finalizadas.ToListAsync();
+            return View(await DenunciasFinalizadas);
 
+        }
+
+        public async Task<ActionResult> DenunciasInvestigacion()
+        {
+
+            var DenunciasInvestigacion = db.View_denuncias_investigacion.ToListAsync();
+            return View(await DenunciasInvestigacion);
+
+        }
+
+        public ActionResult GetEvidencias(int? DenunciaID)
+        {
+
+            var ListadoEvidencias = db.tbl_evidencias_denuncias.Select(e => e.ImagenDenuncia).ToList();
+
+            return Json(ListadoEvidencias, JsonRequestBehavior.AllowGet);
+
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

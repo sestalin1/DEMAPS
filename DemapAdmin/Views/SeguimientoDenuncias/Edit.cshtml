@@ -1,106 +1,218 @@
-﻿@model DemapAdmin.Models.tbl_seguimiento_denuncias
+﻿@model DemapAdmin.Models.View_seguimiento_denuncias
 
-@{
-    ViewBag.Title = "Edit";
-}
-
-<h2>Edit</h2>
+<link type="text/css" rel="stylesheet" href="~/Content/css/pages/profile.css" />
+<link type="text/css" rel="stylesheet" href="~/Content/css/pages/gallery.css" />
 
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>tbl_seguimiento_denuncias</h4>
-        <hr />
-        @Html.ValidationSummary(true)
-        @Html.HiddenFor(model => model.Id)
+<div class="outer">
+    <div class="inner bg-container">
+        <div class="card">
+            <div class="card-block">
+                <div class="row">
+                    <div class="col-lg-6 m-t-35">
+                        <div class="text-xs-center">
+                            <div class="form-group">
+                                <div class="fileinput fileinput-new" data-provides="fileinput">
+                                    <div class="fileinput-new thumb_zoom zoom admin_img_width">
+                                        <img src="~/Content/img/admin.jpg" alt="admin" class="admin_img_width">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="view_friends_imgs">
+                                    <br />
+                                    <p>
+                                        <strong>EVIDENCIAS</strong>
+                                    </p>
+                                    <div class="friends_img_left">
+                                        <div class="thumb_zoom zoom">
+                                            <img src="~/Content/img/mailbox_imgs/2.jpg" class="img-rounded" alt="friend">
+                                        </div>
+                                        <div class="thumb_zoom zoom">
+                                            <img src="~/Content/img/mailbox_imgs/3.jpg" class="img-rounded" alt="friend">
+                                        </div>
+                                        <div class="thumb_zoom zoom">
+                                            <img src="~/Content/img/mailbox_imgs/5.jpg" class="img-rounded" alt="friend">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 m-t-25">
+                        <div>
+                            <ul class="nav nav-inline view_user_nav_padding">
+                                <li class="nav-item card_nav_hover">
+                                    <a class="nav-link active" href="#user" id="home-tab"
+                                       data-toggle="tab" aria-expanded="true">
+                                        Detalles Denuncia
+                                    </a>
+                                </li>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.DenunciaID, "DenunciaID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("DenunciaID", String.Empty)
-                @Html.ValidationMessageFor(model => model.DenunciaID)
+                                <li class="nav-item card_nav_hover">
+                                    <a class="nav-link" href="#tab3" id="followers" data-toggle="tab">Seguimiento</a>
+                                </li>
+                            </ul>
+
+
+
+                            <div id="clothing-nav-content" class="tab-content m-t-10">
+                                <div role="tabpanel" class="tab-pane fade in active" id="user">
+                                    <table class="table" id="users">
+                                        <tr>
+                                            <td>Denunciante (Cedula):</td>
+                                            <td class="inline_edit">
+                                                @Html.EditorFor(model => model.CedulaDenunciante, new { htmlAttributes = new { @class = "form-control ", disabled = "disabled" } })
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Registro Sanitario</td>
+                                            <td>
+                                                @Html.EditorFor(model => model.RegistroSanitario, new { htmlAttributes = new { @class = "form-control ", disabled = "disabled" } })
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Producto</td>
+                                            <td>
+                                                @Html.EditorFor(model => model.Producto, new { htmlAttributes = new { @class = "form-control ", disabled = "disabled" } })
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Establecimiento</td>
+                                            <td>
+                                                @Html.EditorFor(model => model.Establecimiento, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Estado Denuncia</td>
+                                            <td>
+                                                @Html.EditorFor(model => model.Estado, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                                            </td>
+                                        </tr>
+                  
+                                        <tr>
+                                            <td>Usuario Asignado</td>
+                                            <td>
+                                                @Html.EditorFor(model => model.Usuario, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Fecha de Originación</td>
+                                            <td>
+                                                @Html.EditorFor(model => model.FechaCreacion, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Status</td>
+                                            <td>
+                                                @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div role="tabpanel" class="tab-pane fade" id="tab2">
+                                    <div class="card_nav_body_padding">
+                                        <p class="text-justify">
+                                            Presente de verificar
+                                        </p>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="tab3">
+                                    <div class="card_nav_body_padding follower_images">
+                                        <div class="row">
+                                            <div class="col-sm-3 col-xl-2">
+                                                <div class="img">
+                                                    <a href="#">
+                                                        <img src="~/Content/img/user4.png" class="rounded-circle" alt="friend">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-9 col-xl-9">
+                                                <div class="details">
+                                                    <div class="name">
+                                                        <a href="#">Freddy</a>
+                                                    </div>
+                                                    <div class="time">
+                                                        <i class="fa fa-clock-o"></i> Last seen: 7 minutes ago
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row m-t-15">
+                                            <div class="col-sm-3 col-xl-2">
+                                                <div class="img">
+                                                    <a href="#">
+                                                        <img src="~/Content/img/user3.png" class="rounded-circle" alt="friend">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                         
+                             
+                                            <div class="col-xl-10 col-sm-9">
+                                                <div class="details">
+                                                    <div class="name">
+                                                        <a href="#">Carlos</a>
+                                                    </div>
+                                                    <div class="time">
+                                                        <i class="fa fa-clock-o"></i> Last seen: 45 minutes ago
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ESTADISTICS CHARTS -->
+        <div class="row">
+            <div class="col-lg-12 col-xs-12 m-t-25">
+                <div class="card">
+
+                    <ul id="clothing-nav" class="nav nav-tabs" role="tablist">
+
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">Consulta de Medicamentos</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#hats" role="tab" id="hats-tab" data-toggle="tab" aria-controls="hats">Consulta de Alimentos</a>
+                        </li>
+
+
+
+                    </ul>
+                    <div class="card-block">
+                        <div id="clothing-nav-content" class="tab-content">
+
+                            <div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab">
+                                <div class="row">
+                                    <iframe src="http://intranet.msp.gob.do/INTRANET/DGDF/ConsultaRegsitroSanitario.aspx" width="1000" height="600" frameborder="0"></iframe>
+                                </div>
+                            </div>
+
+                            <div role="tabpanel" class="tab-pane fade" id="hats" aria-labelledby="hats-tab">
+
+                                <div class="row">
+                                    <iframe src="http://intranet.msp.gob.do/intranet/saludambiental/alimentos_bebidas.aspx" width="1000" height="600" frameborder="0"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.ComentarioID, "ComentarioID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("ComentarioID", String.Empty)
-                @Html.ValidationMessageFor(model => model.ComentarioID)
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.AsignadaUsuarioID, "AsignadaUsuarioID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("AsignadaUsuarioID", String.Empty)
-                @Html.ValidationMessageFor(model => model.AsignadaUsuarioID)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.StatusDenunciaID, "StatusDenunciaID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("StatusDenunciaID", String.Empty)
-                @Html.ValidationMessageFor(model => model.StatusDenunciaID)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.FechaCreacion, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.FechaCreacion)
-                @Html.ValidationMessageFor(model => model.FechaCreacion)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CreadoPorUsuarioID, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CreadoPorUsuarioID)
-                @Html.ValidationMessageFor(model => model.CreadoPorUsuarioID)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.UltModifFecha, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.UltModifFecha)
-                @Html.ValidationMessageFor(model => model.UltModifFecha)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.UltModifUsuarioID, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.UltModifUsuarioID)
-                @Html.ValidationMessageFor(model => model.UltModifUsuarioID)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Activo, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Activo)
-                @Html.ValidationMessageFor(model => model.Activo)
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </div>
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}

@@ -23,6 +23,7 @@
                             <tr>
                                 <th>#</th>
                                 <th> Denunciante</th>
+                                <th> @Html.DisplayNameFor(model => model.RegistroSanitario) </th>
                                 <th> @Html.DisplayNameFor(model => model.Producto) </th>
                                 <th>Tipo Producto</th>
                                 <th> @Html.DisplayNameFor(model => model.Establecimiento) </th>
@@ -46,6 +47,10 @@
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.CedulaDenunciante)
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.RegistroSanitario)
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Producto)
@@ -73,7 +78,7 @@
                                     </td>
 
                                     <td>
-                                          @Html.ActionLink("ASIGNAR", "Panel", "SeguimientoDenuncias" ,new { id = item.Id }, new { @class = "btn btn-primary btn-secondary md-trigger adv_cust_mod_btn" })
+                                          @Html.ActionLink("ASIGNAR", "Panel", "ViewSeguimientoDenuncias" ,new { id = item.Id }, new { @class = "btn btn-primary btn-secondary md-trigger adv_cust_mod_btn" })
                                     </td>
                                 </tr>
                             }

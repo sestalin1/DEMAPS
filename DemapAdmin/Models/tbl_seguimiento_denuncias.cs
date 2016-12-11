@@ -26,8 +26,8 @@ namespace DemapAdmin.Models
         public Nullable<byte> Activo { get; set; }
     
         public virtual tbl_comentarios_denuncias tbl_comentarios_denuncias { get; set; }
-        public virtual tbl_denuncias tbl_denuncias { get; set; }
         public virtual tbl_usuarios tbl_usuarios { get; set; }
         public virtual tbl_status_denuncias tbl_status_denuncias { get; set; }
+        public virtual tbl_denuncias tbl_denuncias { get; set; }
     }
 }

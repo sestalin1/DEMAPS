@@ -50,7 +50,7 @@ namespace DemapAdmin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,TipoProductoID,EstadoDenunciaID,CedulaDenunciante,Producto,Establecimiento,FechaCreacion,Activo")] tbl_denuncias tbl_denuncias)
+        public async Task<ActionResult> Create([Bind(Include = "Id,TipoProductoID,EstadoDenunciaID,CedulaDenunciante,Producto,Establecimiento,FechaCreacion,Activo,RegistroSanitario")] tbl_denuncias tbl_denuncias)
         {
             if (ModelState.IsValid)
             {
@@ -64,47 +64,65 @@ namespace DemapAdmin.Controllers
             return View(tbl_denuncias);
         }
 
-    
-        public async Task<ActionResult> DenunciasRecibidas()
+        // GET: Denuncias/Edit/5
+        public async Task<ActionResult> Edit(int? id)
         {
-
-            var DenunciasRecibidas = db.View_denuncias_recibidas.ToListAsync();
-            return View(await DenunciasRecibidas);
-
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            tbl_denuncias tbl_denuncias = await db.tbl_denuncias.FindAsync(id);
+            if (tbl_denuncias == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.EstadoDenunciaID = new SelectList(db.tbl_estados_denuncias, "Id", "Estado", tbl_denuncias.EstadoDenunciaID);
+            ViewBag.TipoProductoID = new SelectList(db.tbl_tipos_productos, "Id", "Tipo", tbl_denuncias.TipoProductoID);
+            return View(tbl_denuncias);
         }
 
-        public async Task<ActionResult> DenunciasFalladas()
+        // POST: Denuncias/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Edit([Bind(Include = "Id,TipoProductoID,EstadoDenunciaID,CedulaDenunciante,Producto,Establecimiento,FechaCreacion,Activo,RegistroSanitario")] tbl_denuncias tbl_denuncias)
         {
-
-            var DenunciasFalladas = db.View_denuncias_falladas.ToListAsync();
-            return View(await DenunciasFalladas);
-
+            if (ModelState.IsValid)
+            {
+                db.Entry(tbl_denuncias).State = EntityState.Modified;
+                await db.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            ViewBag.EstadoDenunciaID = new SelectList(db.tbl_estados_denuncias, "Id", "Estado", tbl_denuncias.EstadoDenunciaID);
+            ViewBag.TipoProductoID = new SelectList(db.tbl_tipos_productos, "Id", "Tipo", tbl_denuncias.TipoProductoID);
+            return View(tbl_denuncias);
         }
 
-
-        public async Task<ActionResult> DenunciasFinalizadas()
+        // GET: Denuncias/Delete/5
+        public async Task<ActionResult> Delete(int? id)
         {
-
-            var DenunciasFinalizadas = db.View_denuncias_finalizadas.ToListAsync();
-            return View(await DenunciasFinalizadas);
-
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            tbl_denuncias tbl_denuncias = await db.tbl_denuncias.FindAsync(id);
+            if (tbl_denuncias == null)
+            {
+                return HttpNotFound();
+            }
+            return View(tbl_denuncias);
         }
 
-        public async Task<ActionResult> DenunciasInvestigacion()
+        // POST: Denuncias/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> DeleteConfirmed(int id)
         {
-
-            var DenunciasInvestigacion = db.View_denuncias_investigacion.ToListAsync();
-            return View(await DenunciasInvestigacion);
-
-        }
-
-        public ActionResult GetEvidencias(int ? DenunciaID)
-        {
-
-            var ListadoEvidencias = db.tbl_evidencias_denuncias.Select(e=>e.ImagenDenuncia).ToList();
-
-            return Json(ListadoEvidencias, JsonRequestBehavior.AllowGet);
-
+            tbl_denuncias tbl_denuncias = await db.tbl_denuncias.FindAsync(id);
+            db.tbl_denuncias.Remove(tbl_denuncias);
+            await db.SaveChangesAsync();
+            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)

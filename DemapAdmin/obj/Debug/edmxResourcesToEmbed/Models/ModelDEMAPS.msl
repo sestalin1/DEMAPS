@@ -23,20 +23,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tbl_denuncias">
-      <EntityTypeMapping TypeName="DEMAPSModel.tbl_denuncias">
-        <MappingFragment StoreEntitySet="tbl_denuncias">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="TipoProductoID" ColumnName="TipoProductoID" />
-          <ScalarProperty Name="EstadoDenunciaID" ColumnName="EstadoDenunciaID" />
-          <ScalarProperty Name="CedulaDenunciante" ColumnName="CedulaDenunciante" />
-          <ScalarProperty Name="Producto" ColumnName="Producto" />
-          <ScalarProperty Name="Establecimiento" ColumnName="Establecimiento" />
-          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
-          <ScalarProperty Name="Activo" ColumnName="Activo" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="tbl_estados_denuncias">
       <EntityTypeMapping TypeName="DEMAPSModel.tbl_estados_denuncias">
         <MappingFragment StoreEntitySet="tbl_estados_denuncias">
@@ -124,18 +110,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tbl_tipos_productos">
-      <EntityTypeMapping TypeName="DEMAPSModel.tbl_tipos_productos">
-        <MappingFragment StoreEntitySet="tbl_tipos_productos">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
-          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
-          <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
-          <ScalarProperty Name="Activo" ColumnName="Activo" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="tbl_usuarios">
       <EntityTypeMapping TypeName="DEMAPSModel.tbl_usuarios">
         <MappingFragment StoreEntitySet="tbl_usuarios">
@@ -154,6 +128,7 @@
     <EntitySetMapping Name="View_denuncias_falladas">
       <EntityTypeMapping TypeName="DEMAPSModel.View_denuncias_falladas">
         <MappingFragment StoreEntitySet="View_denuncias_falladas">
+          <ScalarProperty Name="RegistroSanitario" ColumnName="RegistroSanitario" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="CedulaDenunciante" ColumnName="CedulaDenunciante" />
           <ScalarProperty Name="Producto" ColumnName="Producto" />
@@ -176,6 +151,7 @@
     <EntitySetMapping Name="View_denuncias_finalizadas">
       <EntityTypeMapping TypeName="DEMAPSModel.View_denuncias_finalizadas">
         <MappingFragment StoreEntitySet="View_denuncias_finalizadas">
+          <ScalarProperty Name="RegistroSanitario" ColumnName="RegistroSanitario" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="CedulaDenunciante" ColumnName="CedulaDenunciante" />
           <ScalarProperty Name="Producto" ColumnName="Producto" />
@@ -191,6 +167,7 @@
     <EntitySetMapping Name="View_denuncias_investigacion">
       <EntityTypeMapping TypeName="DEMAPSModel.View_denuncias_investigacion">
         <MappingFragment StoreEntitySet="View_denuncias_investigacion">
+          <ScalarProperty Name="RegistroSanitario" ColumnName="RegistroSanitario" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="CedulaDenunciante" ColumnName="CedulaDenunciante" />
           <ScalarProperty Name="Producto" ColumnName="Producto" />
@@ -206,6 +183,7 @@
     <EntitySetMapping Name="View_denuncias_recibidas">
       <EntityTypeMapping TypeName="DEMAPSModel.View_denuncias_recibidas">
         <MappingFragment StoreEntitySet="View_denuncias_recibidas">
+          <ScalarProperty Name="RegistroSanitario" ColumnName="RegistroSanitario" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="CedulaDenunciante" ColumnName="CedulaDenunciante" />
           <ScalarProperty Name="Producto" ColumnName="Producto" />
@@ -221,6 +199,7 @@
     <EntitySetMapping Name="View_denuncias">
       <EntityTypeMapping TypeName="DEMAPSModel.View_denuncias">
         <MappingFragment StoreEntitySet="View_denuncias">
+          <ScalarProperty Name="RegistroSanitario" ColumnName="RegistroSanitario" />
           <ScalarProperty Name="Activo" ColumnName="Activo" />
           <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
           <ScalarProperty Name="Tipo" ColumnName="Tipo" />
@@ -236,6 +215,8 @@
     <EntitySetMapping Name="View_seguimiento_denuncias">
       <EntityTypeMapping TypeName="DEMAPSModel.View_seguimiento_denuncias">
         <MappingFragment StoreEntitySet="View_seguimiento_denuncias">
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="RegistroSanitario" ColumnName="RegistroSanitario" />
           <ScalarProperty Name="UltModifUsuarioID" ColumnName="UltModifUsuarioID" />
           <ScalarProperty Name="UltModifFecha" ColumnName="UltModifFecha" />
           <ScalarProperty Name="Activo" ColumnName="Activo" />
@@ -243,11 +224,39 @@
           <ScalarProperty Name="Perfil" ColumnName="Perfil" />
           <ScalarProperty Name="Usuario" ColumnName="Usuario" />
           <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="ImagenDenuncia" ColumnName="ImagenDenuncia" />
           <ScalarProperty Name="Estado" ColumnName="Estado" />
           <ScalarProperty Name="Producto" ColumnName="Producto" />
           <ScalarProperty Name="Establecimiento" ColumnName="Establecimiento" />
           <ScalarProperty Name="CedulaDenunciante" ColumnName="CedulaDenunciante" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_denuncias">
+      <EntityTypeMapping TypeName="DEMAPSModel.tbl_denuncias">
+        <MappingFragment StoreEntitySet="tbl_denuncias">
+          <ScalarProperty Name="Longitud" ColumnName="Longitud" />
+          <ScalarProperty Name="Latitud" ColumnName="Latitud" />
+          <ScalarProperty Name="RegistroSanitario" ColumnName="RegistroSanitario" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="Establecimiento" ColumnName="Establecimiento" />
+          <ScalarProperty Name="Producto" ColumnName="Producto" />
+          <ScalarProperty Name="CedulaDenunciante" ColumnName="CedulaDenunciante" />
+          <ScalarProperty Name="EstadoDenunciaID" ColumnName="EstadoDenunciaID" />
+          <ScalarProperty Name="TipoProductoID" ColumnName="TipoProductoID" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_tipos_productos">
+      <EntityTypeMapping TypeName="DEMAPSModel.tbl_tipos_productos">
+        <MappingFragment StoreEntitySet="tbl_tipos_productos">
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>

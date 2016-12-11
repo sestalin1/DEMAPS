@@ -459,8 +459,8 @@ $(document).ready(function () {
     }
     update();
 //start area chart
-    var da1 = [["Jan", 50],["Feb", 75],["Mar", 60],["Apr", 100],["May", 60],["Jun", 80],["Jul", 40]];
-    var da2 = [["Jan", 20],["Feb", 40],["Mar", 30],["Apr", 40],["May", 15],["Jun", 25],["Jul", 10]];
+    var da1 = [["Jan", 0],["Feb", 0],["Mar", 0],["Apr", 0],["May", 0],["Jun", 0],["Jul", 1]];
+    var da2 = [["Jan", 0],["Feb", 40],["Mar", 30],["Apr", 40],["May", 15],["Jun", 0],["Jul", 1]];
     $.plot("#area-chart", [{
         data: da1,
         label: "Product 1",

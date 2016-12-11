@@ -22,13 +22,16 @@ namespace DemapAdmin.Models
         }
     
         public int Id { get; set; }
-        public int TipoProductoID { get; set; }
+        public Nullable<int> TipoProductoID { get; set; }
         public Nullable<int> EstadoDenunciaID { get; set; }
         public string CedulaDenunciante { get; set; }
         public string Producto { get; set; }
         public string Establecimiento { get; set; }
         public Nullable<System.DateTime> FechaCreacion { get; set; }
         public Nullable<byte> Activo { get; set; }
+        public string RegistroSanitario { get; set; }
+        public string Latitud { get; set; }
+        public string Longitud { get; set; }
     
         public virtual tbl_estados_denuncias tbl_estados_denuncias { get; set; }
         public virtual tbl_tipos_productos tbl_tipos_productos { get; set; }

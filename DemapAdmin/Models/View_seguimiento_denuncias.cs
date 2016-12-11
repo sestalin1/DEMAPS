@@ -19,7 +19,6 @@ namespace DemapAdmin.Models
         public string Establecimiento { get; set; }
         public string Producto { get; set; }
         public string Estado { get; set; }
-        public string ImagenDenuncia { get; set; }
         public string Status { get; set; }
         public string Usuario { get; set; }
         public string Perfil { get; set; }
@@ -27,5 +26,7 @@ namespace DemapAdmin.Models
         public Nullable<byte> Activo { get; set; }
         public Nullable<System.DateTime> UltModifFecha { get; set; }
         public Nullable<int> UltModifUsuarioID { get; set; }
+        public string RegistroSanitario { get; set; }
+        public string Tipo { get; set; }
     }
 }

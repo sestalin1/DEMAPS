@@ -56,6 +56,14 @@
         </div>
 
         <div class="form-group">
+            @Html.LabelFor(model => model.ImagenDenuncia, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ImagenDenuncia)
+                @Html.ValidationMessageFor(model => model.ImagenDenuncia)
+            </div>
+        </div>
+
+        <div class="form-group">
             @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Status)
@@ -108,14 +116,6 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.UltModifUsuarioID)
                 @Html.ValidationMessageFor(model => model.UltModifUsuarioID)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.RegistroSanitario, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.RegistroSanitario)
-                @Html.ValidationMessageFor(model => model.RegistroSanitario)
             </div>
         </div>
 

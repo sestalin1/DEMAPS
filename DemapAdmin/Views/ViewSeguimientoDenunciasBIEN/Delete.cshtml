@@ -1,4 +1,4 @@
-﻿@model DemapAdmin.Models.tbl_denuncias
+﻿@model DemapAdmin.Models.View_seguimiento_denuncias
 
 @{
     ViewBag.Title = "Delete";
@@ -8,7 +8,7 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>tbl_denuncias</h4>
+    <h4>View_seguimiento_denuncias</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -20,6 +20,14 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.Establecimiento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Establecimiento)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Producto)
         </dt>
 
@@ -28,11 +36,43 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Establecimiento)
+            @Html.DisplayNameFor(model => model.Estado)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Establecimiento)
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImagenDenuncia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImagenDenuncia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Perfil)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Perfil)
         </dd>
 
         <dt>
@@ -52,19 +92,19 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.tbl_estados_denuncias.Estado)
+            @Html.DisplayNameFor(model => model.UltModifFecha)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.tbl_estados_denuncias.Estado)
+            @Html.DisplayFor(model => model.UltModifFecha)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.tbl_tipos_productos.Tipo)
+            @Html.DisplayNameFor(model => model.UltModifUsuarioID)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.tbl_tipos_productos.Tipo)
+            @Html.DisplayFor(model => model.UltModifUsuarioID)
         </dd>
 
     </dl>

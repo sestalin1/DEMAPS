@@ -256,6 +256,10 @@
     <Compile Include="Models\View_seguimiento_denuncias.cs">
       <DependentUpon>ModelDEMAPS.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\WebServiceDenuncias.asmx.cs">
+      <DependentUpon>WebServiceDenuncias.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -521,6 +525,7 @@
       <DependentUpon>ModelDEMAPS.edmx</DependentUpon>
       <LastGenOutput>ModelDEMAPS.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\WebServiceDenuncias.asmx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Models\ModelDEMAPS.edmx">
@@ -629,23 +634,18 @@
     <Content Include="Views\tbl_usuarios\Edit.cshtml" />
     <Content Include="Views\tbl_usuarios\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
-    <Content Include="Views\SeguimientoDenuncias2\Create.cshtml" />
-    <Content Include="Views\SeguimientoDenuncias2\Delete.cshtml" />
-    <Content Include="Views\SeguimientoDenuncias2\Details.cshtml" />
-    <Content Include="Views\SeguimientoDenuncias2\Edit.cshtml" />
-    <Content Include="Views\SeguimientoDenuncias2\Index.cshtml" />
+    <Content Include="Views\DenunciasBIEN\Index.cshtml" />
+    <Content Include="Views\ConsultaRegistroSanitario\Index.cshtml" />
+    <Content Include="Views\ViewSeguimientoDenunciasBIEN\Create.cshtml" />
+    <Content Include="Views\ViewSeguimientoDenunciasBIEN\Delete.cshtml" />
+    <Content Include="Views\ViewSeguimientoDenunciasBIEN\Details.cshtml" />
+    <Content Include="Views\SeguimientoDenuncias\Edit.cshtml" />
+    <Content Include="Views\ViewSeguimientoDenunciasBIEN\Index.cshtml" />
     <Content Include="Views\Denuncias\Create.cshtml" />
-    <Content Include="Views\Denuncias\Delete.cshtml" />
     <Content Include="Views\Denuncias\Details.cshtml" />
-    <Content Include="Views\Denuncias\Edit.cshtml" />
     <Content Include="Views\Denuncias\Index.cshtml" />
     <Content Include="Views\SeguimientoDenuncias\Create.cshtml" />
-    <Content Include="Views\SeguimientoDenuncias\Delete.cshtml" />
-    <Content Include="Views\SeguimientoDenuncias\Details.cshtml" />
-    <Content Include="Views\SeguimientoDenuncias\Edit.cshtml" />
     <Content Include="Views\SeguimientoDenuncias\Index.cshtml" />
-    <Content Include="Views\ConsultaRegistroSanitario\Index.cshtml" />
-    <Content Include="Views\SeguimientoDenuncias\Panel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -24,14 +24,17 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
-    <Property Name="TipoProductoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TipoProductoID" Type="int" />
     <Property Name="EstadoDenunciaID" Type="int" />
     <Property Name="CedulaDenunciante" Type="nvarchar" MaxLength="50" />
     <Property Name="Producto" Type="nvarchar" MaxLength="50" />
     <Property Name="Establecimiento" Type="text" />
     <Property Name="FechaCreacion" Type="date" />
     <Property Name="Activo" Type="tinyint" />
+    <Property Name="RegistroSanitario" Type="nvarchar" MaxLength="50" />
+    <Property Name="Latitud" Type="nvarchar" MaxLength="50" />
+    <Property Name="Longitud" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="tbl_estados_denuncias">
     <Key>
@@ -153,6 +156,7 @@ warning 6002: The table/view 'DEMAPS.dbo.View_denuncias' does not have a primary
     <Property Name="Tipo" Type="nvarchar" MaxLength="50" />
     <Property Name="FechaCreacion" Type="date" />
     <Property Name="Activo" Type="tinyint" />
+    <Property Name="RegistroSanitario" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'DEMAPS.dbo.View_denuncias_falladas' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -176,6 +180,7 @@ warning 6002: The table/view 'DEMAPS.dbo.View_denuncias_falladas' does not have 
     <Property Name="UltModifFecha" Type="date" />
     <Property Name="CreadoPorUsuarioID" Type="int" />
     <Property Name="TipoProducto" Type="nvarchar" MaxLength="50" />
+    <Property Name="RegistroSanitario" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'DEMAPS.dbo.View_denuncias_finalizadas' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -192,6 +197,7 @@ warning 6002: The table/view 'DEMAPS.dbo.View_denuncias_finalizadas' does not ha
     <Property Name="VideoDenuncia" Type="text" />
     <Property Name="FechaCreacion" Type="date" />
     <Property Name="TipoProducto" Type="nvarchar" MaxLength="50" />
+    <Property Name="RegistroSanitario" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'DEMAPS.dbo.View_denuncias_investigacion' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -208,6 +214,7 @@ warning 6002: The table/view 'DEMAPS.dbo.View_denuncias_investigacion' does not 
     <Property Name="VideoDenuncia" Type="text" />
     <Property Name="FechaCreacion" Type="date" />
     <Property Name="TipoProducto" Type="nvarchar" MaxLength="50" />
+    <Property Name="RegistroSanitario" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'DEMAPS.dbo.View_denuncias_recibidas' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -224,6 +231,7 @@ warning 6002: The table/view 'DEMAPS.dbo.View_denuncias_recibidas' does not have
     <Property Name="VideoDenuncia" Type="text" />
     <Property Name="FechaCreacion" Type="date" />
     <Property Name="TipoProducto" Type="nvarchar" MaxLength="50" />
+    <Property Name="RegistroSanitario" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'DEMAPS.dbo.View_seguimiento_denuncias' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -236,7 +244,6 @@ warning 6002: The table/view 'DEMAPS.dbo.View_seguimiento_denuncias' does not ha
     <Property Name="Establecimiento" Type="text" />
     <Property Name="Producto" Type="nvarchar" MaxLength="50" />
     <Property Name="Estado" Type="nvarchar" MaxLength="50" />
-    <Property Name="ImagenDenuncia" Type="text" />
     <Property Name="Status" Type="nvarchar" MaxLength="50" />
     <Property Name="Usuario" Type="nvarchar" MaxLength="50" />
     <Property Name="Perfil" Type="nvarchar" MaxLength="50" />
@@ -244,6 +251,8 @@ warning 6002: The table/view 'DEMAPS.dbo.View_seguimiento_denuncias' does not ha
     <Property Name="Activo" Type="tinyint" />
     <Property Name="UltModifFecha" Type="date" />
     <Property Name="UltModifUsuarioID" Type="int" />
+    <Property Name="RegistroSanitario" Type="nvarchar" MaxLength="50" />
+    <Property Name="Tipo" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <Association Name="FK_tbl_denuncias_tbl_estados_denuncias">
     <End Role="tbl_estados_denuncias" Type="Self.tbl_estados_denuncias" Multiplicity="0..1" />
@@ -257,8 +266,8 @@ warning 6002: The table/view 'DEMAPS.dbo.View_seguimiento_denuncias' does not ha
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_tbl_denuncias_TipoProductoID">
-    <End Role="tbl_tipos_productos" Type="Self.tbl_tipos_productos" Multiplicity="1" />
+  <Association Name="FK_tbl_denuncias_tbl_tipos_productos">
+    <End Role="tbl_tipos_productos" Type="Self.tbl_tipos_productos" Multiplicity="0..1" />
     <End Role="tbl_denuncias" Type="Self.tbl_denuncias" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="tbl_tipos_productos">
@@ -400,7 +409,8 @@ warning 6002: The table/view 'DEMAPS.dbo.View_seguimiento_denuncias' does not ha
     [View_denuncias].[Status] AS [Status], 
     [View_denuncias].[Tipo] AS [Tipo], 
     [View_denuncias].[FechaCreacion] AS [FechaCreacion], 
-    [View_denuncias].[Activo] AS [Activo]
+    [View_denuncias].[Activo] AS [Activo], 
+    [View_denuncias].[RegistroSanitario] AS [RegistroSanitario]
     FROM [dbo].[View_denuncias] AS [View_denuncias]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="View_denuncias_falladas" EntityType="Self.View_denuncias_falladas" store:Type="Views" store:Schema="dbo">
@@ -420,7 +430,8 @@ warning 6002: The table/view 'DEMAPS.dbo.View_seguimiento_denuncias' does not ha
     [View_denuncias_falladas].[UltModifUsuarioID] AS [UltModifUsuarioID], 
     [View_denuncias_falladas].[UltModifFecha] AS [UltModifFecha], 
     [View_denuncias_falladas].[CreadoPorUsuarioID] AS [CreadoPorUsuarioID], 
-    [View_denuncias_falladas].[TipoProducto] AS [TipoProducto]
+    [View_denuncias_falladas].[TipoProducto] AS [TipoProducto], 
+    [View_denuncias_falladas].[RegistroSanitario] AS [RegistroSanitario]
     FROM [dbo].[View_denuncias_falladas] AS [View_denuncias_falladas]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="View_denuncias_finalizadas" EntityType="Self.View_denuncias_finalizadas" store:Type="Views" store:Schema="dbo">
@@ -433,7 +444,8 @@ warning 6002: The table/view 'DEMAPS.dbo.View_seguimiento_denuncias' does not ha
     [View_denuncias_finalizadas].[ImagenDenuncia] AS [ImagenDenuncia], 
     [View_denuncias_finalizadas].[VideoDenuncia] AS [VideoDenuncia], 
     [View_denuncias_finalizadas].[FechaCreacion] AS [FechaCreacion], 
-    [View_denuncias_finalizadas].[TipoProducto] AS [TipoProducto]
+    [View_denuncias_finalizadas].[TipoProducto] AS [TipoProducto], 
+    [View_denuncias_finalizadas].[RegistroSanitario] AS [RegistroSanitario]
     FROM [dbo].[View_denuncias_finalizadas] AS [View_denuncias_finalizadas]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="View_denuncias_investigacion" EntityType="Self.View_denuncias_investigacion" store:Type="Views" store:Schema="dbo">
@@ -446,7 +458,8 @@ warning 6002: The table/view 'DEMAPS.dbo.View_seguimiento_denuncias' does not ha
     [View_denuncias_investigacion].[ImagenDenuncia] AS [ImagenDenuncia], 
     [View_denuncias_investigacion].[VideoDenuncia] AS [VideoDenuncia], 
     [View_denuncias_investigacion].[FechaCreacion] AS [FechaCreacion], 
-    [View_denuncias_investigacion].[TipoProducto] AS [TipoProducto]
+    [View_denuncias_investigacion].[TipoProducto] AS [TipoProducto], 
+    [View_denuncias_investigacion].[RegistroSanitario] AS [RegistroSanitario]
     FROM [dbo].[View_denuncias_investigacion] AS [View_denuncias_investigacion]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="View_denuncias_recibidas" EntityType="Self.View_denuncias_recibidas" store:Type="Views" store:Schema="dbo">
@@ -459,7 +472,8 @@ warning 6002: The table/view 'DEMAPS.dbo.View_seguimiento_denuncias' does not ha
     [View_denuncias_recibidas].[ImagenDenuncia] AS [ImagenDenuncia], 
     [View_denuncias_recibidas].[VideoDenuncia] AS [VideoDenuncia], 
     [View_denuncias_recibidas].[FechaCreacion] AS [FechaCreacion], 
-    [View_denuncias_recibidas].[TipoProducto] AS [TipoProducto]
+    [View_denuncias_recibidas].[TipoProducto] AS [TipoProducto], 
+    [View_denuncias_recibidas].[RegistroSanitario] AS [RegistroSanitario]
     FROM [dbo].[View_denuncias_recibidas] AS [View_denuncias_recibidas]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="View_seguimiento_denuncias" EntityType="Self.View_seguimiento_denuncias" store:Type="Views" store:Schema="dbo">
@@ -469,21 +483,22 @@ warning 6002: The table/view 'DEMAPS.dbo.View_seguimiento_denuncias' does not ha
     [View_seguimiento_denuncias].[Establecimiento] AS [Establecimiento], 
     [View_seguimiento_denuncias].[Producto] AS [Producto], 
     [View_seguimiento_denuncias].[Estado] AS [Estado], 
-    [View_seguimiento_denuncias].[ImagenDenuncia] AS [ImagenDenuncia], 
     [View_seguimiento_denuncias].[Status] AS [Status], 
     [View_seguimiento_denuncias].[Usuario] AS [Usuario], 
     [View_seguimiento_denuncias].[Perfil] AS [Perfil], 
     [View_seguimiento_denuncias].[FechaCreacion] AS [FechaCreacion], 
     [View_seguimiento_denuncias].[Activo] AS [Activo], 
     [View_seguimiento_denuncias].[UltModifFecha] AS [UltModifFecha], 
-    [View_seguimiento_denuncias].[UltModifUsuarioID] AS [UltModifUsuarioID]
+    [View_seguimiento_denuncias].[UltModifUsuarioID] AS [UltModifUsuarioID], 
+    [View_seguimiento_denuncias].[RegistroSanitario] AS [RegistroSanitario], 
+    [View_seguimiento_denuncias].[Tipo] AS [Tipo]
     FROM [dbo].[View_seguimiento_denuncias] AS [View_seguimiento_denuncias]</DefiningQuery>
     </EntitySet>
     <AssociationSet Name="FK_tbl_denuncias_tbl_estados_denuncias" Association="Self.FK_tbl_denuncias_tbl_estados_denuncias">
       <End Role="tbl_estados_denuncias" EntitySet="tbl_estados_denuncias" />
       <End Role="tbl_denuncias" EntitySet="tbl_denuncias" />
     </AssociationSet>
-    <AssociationSet Name="FK_tbl_denuncias_TipoProductoID" Association="Self.FK_tbl_denuncias_TipoProductoID">
+    <AssociationSet Name="FK_tbl_denuncias_tbl_tipos_productos" Association="Self.FK_tbl_denuncias_tbl_tipos_productos">
       <End Role="tbl_tipos_productos" EntitySet="tbl_tipos_productos" />
       <End Role="tbl_denuncias" EntitySet="tbl_denuncias" />
     </AssociationSet>
